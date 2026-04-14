@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopNow - E-Commerce Maksimal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-top">
+    <a class="logo" onclick="resetUI()">Shop<span>Now</span></a>
+    
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Cari elektronik, musik, kosmetik..." autocomplete="off">
+      <button onclick="applyFilters()">Cari</button>
+    </div>
+
+    <div class="nav-icons">
+      <button class="icon-btn" onclick="toggleTheme()">
+        <span class="emoji" id="themeIcon">🌙</span>
+        <span class="label">Tema</span>
+      </button>
+      <button class="icon-btn" onclick="openPanel('wishlistPanel')">
+        <span class="emoji">❤️</span>
+        <span class="label">Wishlist</span>
+        <span class="badge" id="wishBadge" style="background:var(--danger)">0</span>
+      </button>
+      <button class="icon-btn" onclick="openPanel('cartPanel')">
+        <span class="emoji">🛒</span>
+        <span class="label">Keranjang</span>
+        <span class="badge" id="cartBadge">0</span>
+      </button>
+      <button class="icon-btn" onclick="openAuthModal()">
+        <span class="emoji">👤</span>
+        <span class="label" id="userLabel">Masuk</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="cat-strip">
+  <div class="cat-container" id="categoryNav">
+    <a class="cat-link active" onclick="setCategory('Semua', this)">Semua Etalase</a>
+    <a class="cat-link" onclick="setCategory('Elektronik', this)">📱 Elektronik</a>
+    <a class="cat-link" onclick="setCategory('Kecantikan', this)">💄 Kosmetik & Skincare</a>
+    <a class="cat-link" onclick="setCategory('Fashion', this)">👗 Fashion Premium</a>
+    <a class="cat-link" onclick="setCategory('Hobi & Musik', this)">🎹 Hobi & Musik</a>
+  </div>
+</div>
+
+<div class="main-wrapper">
+  <aside class="sidebar">
+    <div class="filter-group">
+      <div class="filter-title">Urutkan Berdasarkan</div>
+      <select id="sortSelect" class="filter-input" onchange="applyFilters()">
+        <option value="populer">Terpopuler</option>
+        <option value="termurah">Termurah</option>
+        <option value="termahal">Termahal</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <div class="filter-title">Filter Harga</div>
+      <input type="number" id="minPrice" class="filter-input" placeholder="Min (Rp)" oninput="applyFilters()">
+      <input type="number" id="maxPrice" class="filter-input" placeholder="Max (Rp)" oninput="applyFilters()">
+    </div>
+  </aside>
+
+  <main class="content-area">
+    <div class="grid-header" id="gridTitle">✨ Rekomendasi Hari Ini</div>
+    <div class="product-grid" id="productGrid">
+      </div>
+  </main>
+</div>
+
+<div class="overlay" id="globalOverlay" onclick="closeAllPanels()"></div>
+
+<div class="side-panel" id="cartPanel">
+  <div class="panel-header">
+    <div class="panel-title">🛒 Keranjang Belanja</div>
+    <button class="btn-close" onclick="closeAllPanels()">✕</button>
+  </div>
+  <div class="panel-body" id="cartBody"></div>
+  <div class="panel-footer" id="cartFooter">
+    <div id="cartSummary" style="display:flex; justify-content:space-between; font-weight:800; font-size:16px; margin-bottom:15px; color:var(--text);"></div>
+    <button class="btn-checkout" onclick="openCheckoutModal()">Lanjut ke Pembayaran WA 💬</button>
+  </div>
+</div>
+
+<div class="side-panel" id="wishlistPanel">
+  <div class="panel-header" style="background: var(--bg);">
+    <div class="panel-title">❤️ Wishlist Tersimpan</div>
+    <button class="btn-close" onclick="closeAllPanels()">✕</button>
+  </div>
+  <div class="panel-body" id="wishlistBody"></div>
+</div>
+
+<div class="modal" id="loginModal">
+  <div class="modal-content" style="max-width: 400px; text-align: center;">
+    <button class="btn-close" style="position:absolute; top:20px; right:20px;" onclick="closeModal('loginModal')">✕</button>
+    <div style="font-size: 50px; margin-bottom: 10px;">👋</div>
+    <h2 style="margin-bottom: 5px; font-weight:800; color:var(--text);">Masuk ke Akun</h2>
+    <p style="color:var(--text-muted); margin-bottom: 25px; font-size:13px;">Belanja jadi lebih cepat dan aman.</p>
+    
+    <div class="form-group" style="text-align: left;">
+      <label>Nama Pengguna / Email</label>
+      <input type="text" class="filter-input" id="loginUsername" placeholder="Contoh: Budi">
+    </div>
+    <div class="form-group" style="text-align: left;">
+      <label>Kata Sandi</label>
+      <input type="password" class="filter-input" id="loginPassword" placeholder="Masukkan kata sandi...">
+    </div>
+    
+    <button class="btn-checkout" style="margin-top: 10px;" onclick="processLogin()">Masuk Sekarang</button>
+  </div>
+</div>
+
+<div class="modal" id="profileModal">
+  <div class="modal-content" style="max-width: 400px; text-align: center;">
+    <button class="btn-close" style="position:absolute; top:20px; right:20px;" onclick="closeModal('profileModal')">✕</button>
+    <div style="font-size: 60px; margin-bottom: 10px;">👤</div>
+    <h2 id="welcomeText" style="margin-bottom: 5px; font-weight:800; color:var(--text);">Halo!</h2>
+    <p style="color:var(--text-muted); margin-bottom: 25px; font-size:13px;">Selamat datang di dashboard pribadimu.</p>
+    
+    <button class="btn-checkout" style="background: var(--danger);" onclick="processLogout()">Keluar Akun</button>
+  </div>
+</div>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-content">
+    <button class="btn-close" style="position:absolute; top:20px; right:20px;" onclick="closeModal('checkoutModal')">✕</button>
+    <h2 style="margin-bottom: 25px; font-weight:800; color:var(--text);">💳 Konfirmasi Pesanan</h2>
+    
+    <div class="form-group">
+      <label>Nama Penerima</label>
+      <input type="text" class="filter-input" placeholder="Masukkan nama lengkap..." id="checkoutName">
+    </div>
+    
+    <div class="form-group">
+      <label>Alamat Pengiriman Lengkap</label>
+      <textarea class="filter-input" rows="3" placeholder="Contoh: Jl. Sudirman No. 123, RT/RW 01/02, Jakarta" id="checkoutAddress"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label>Pilih Metode Pembayaran</label>
+      <select class="filter-input" id="checkoutMethod" onchange="toggleQrisView()">
+        <option value="Transfer Bank">Transfer Bank (Instruksi di WA)</option>
+        <option value="QRIS">Scan QRIS (Otomatis Muncul QR)</option>
+        <option value="E-Wallet">E-Wallet (Dana / OVO / GoPay)</option>
+        <option value="COD">Bayar di Tempat (COD)</option>
+      </select>
+    </div>
+
+    <div id="qrisContainer" style="display:none; text-align:center; padding:15px; background:var(--bg); border: 2px dashed var(--success); border-radius:12px; margin-bottom: 15px;">
+      <p style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">Silakan Scan QR Code di bawah ini:</p>
+      
+      <img src="https://yaffblog.wordpress.com/wp-content/uploads/2026/04/img_3744.jpeg" alt="QRIS Payment" style="max-width: 200px; border-radius: 8px; box-shadow: var(--shadow);">
+      
+      <p style="font-size:11px; color:var(--text-muted); margin-top:10px;">*Simpan atau Screenshot QR ini, lalu klik Konfirmasi & Kirim WA.</p>
+    </div>
+
+    <div style="background:var(--bg); padding:15px; border-radius:8px; margin: 15px 0; border:1px solid var(--border);">
+      <div id="checkoutTotalText" style="font-size:24px; font-weight:800; color:var(--primary); text-align:center;">Rp0</div>
+    </div>
+    
+    <button class="btn-checkout" style="background:#25D366;" onclick="processPaymentAndSendWA()">Konfirmasi & Kirim ke WA 💬</button>
+  </div>
+</div>
+
+<div id="toastBox"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
