@@ -2,1295 +2,502 @@
 
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShopNow — E-Commerce Premium</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --primary: #EE4D2D;
-  --primary-dark: #C93D20;
-  --primary-light: #FFF0ED;
-  --accent: #FFD700;
-  --success: #00B14F;
-  --info: #2563EB;
-  --danger: #EF4444;
-  --bg: #F7F8FA;
-  --surface: #FFFFFF;
-  --surface2: #F0F2F5;
-  --text: #1A1A2E;
-  --text-muted: #6B7280;
-  --border: #E5E7EB;
-  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
-  --shadow: 0 4px 20px rgba(0,0,0,0.09);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.14);
-  --radius: 14px;
-  --radius-sm: 8px;
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-}
-body.dark {
-  --bg: #0D0D12;
-  --surface: #16161F;
-  --surface2: #1E1E2A;
-  --text: #F0F0F5;
-  --text-muted: #8888A0;
-  --border: #2A2A38;
-  --shadow: 0 4px 20px rgba(0,0,0,0.5);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.7);
-  --primary-light: #2A1510;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopNow — E-Commerce Premium. Belanja produk pilihan dengan harga terbaik. Elektronik, Kecantikan, Fashion, dan lebih banyak lagi.">
+  <meta name="theme-color" content="#EE4D2D">
+  <title>ShopNow — E-Commerce Premium</title>
 
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:var(–font-body);background:var(–bg);color:var(–text);overflow-x:hidden;transition:background .3s,color .3s;}
+  <!-- Google Fonts -->
 
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:6px;height:6px;}
-::-webkit-scrollbar-track{background:var(–bg);}
-::-webkit-scrollbar-thumb{background:var(–border);border-radius:10px;}
-::-webkit-scrollbar-thumb:hover{background:var(–primary);}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-/* ── PROMO STRIP ── */
-.promo-strip{background:linear-gradient(90deg,#EE4D2D,#FF7337,#FF4444,#EE4D2D);background-size:300%;animation:bgSlide 4s linear infinite;color:#fff;text-align:center;padding:9px 20px;font-size:13px;font-weight:700;letter-spacing:.3px;}
-@keyframes bgSlide{0%{background-position:0%}100%{background-position:300%}}
+  <!-- Stylesheet -->
 
-/* ── NAVBAR ── */
-.navbar{background:var(–primary);position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(238,77,45,.25);transition:.3s;}
-body.dark .navbar{background:#111118;border-bottom:1px solid var(–border);box-shadow:none;}
-.nav-inner{max-width:1300px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:18px;height:68px;}
-.logo{font-family:var(–font-display);font-size:26px;font-weight:800;color:#fff;cursor:pointer;letter-spacing:-1px;text-decoration:none;flex-shrink:0;}
-.logo span{color:var(–accent);}
-.search-wrap{flex:1;display:flex;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.25);border-radius:50px;height:44px;overflow:hidden;transition:.3s;backdrop-filter:blur(6px);}
-.search-wrap:focus-within{background:#fff;border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.2);}
-.search-wrap:focus-within input,.search-wrap:focus-within input::placeholder{color:var(–text);}
-.search-wrap input{flex:1;border:none;background:transparent;padding:0 20px;font-family:var(–font-body);font-size:14px;font-weight:500;color:#fff;outline:none;}
-.search-wrap input::placeholder{color:rgba(255,255,255,.7);}
-.search-btn{background:var(–accent);border:none;padding:0 22px;cursor:pointer;font-weight:800;font-size:14px;color:#000;transition:.2s;border-radius:0 50px 50px 0;flex-shrink:0;}
-.search-btn:hover{background:#FFE033;}
-.nav-actions{display:flex;gap:4px;flex-shrink:0;}
-.nav-btn{display:flex;flex-direction:column;align-items:center;color:#fff;background:none;border:none;cursor:pointer;position:relative;padding:8px 12px;border-radius:10px;transition:.2s;font-family:var(–font-body);}
-.nav-btn:hover{background:rgba(255,255,255,.15);transform:translateY(-2px);}
-.nav-btn .nb-icon{font-size:20px;margin-bottom:2px;line-height:1;}
-.nav-btn .nb-label{font-size:11px;font-weight:700;}
-.nav-badge{position:absolute;top:4px;right:6px;background:var(–accent);color:#000;font-size:10px;font-weight:800;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 3px;border:2px solid var(–primary);transition:.3s;}
-body.dark .nav-badge{border-color:#111118;}
-
-/* ── CATEGORY BAR ── */
-.cat-bar{background:var(–surface);border-bottom:1px solid var(–border);transition:.3s;}
-.cat-inner{max-width:1300px;margin:0 auto;padding:0 24px;display:flex;gap:30px;overflow-x:auto;scrollbar-width:none;height:48px;align-items:center;}
-.cat-inner::-webkit-scrollbar{display:none;}
-.cat-link{color:var(–text-muted);font-weight:700;font-size:13.5px;white-space:nowrap;cursor:pointer;padding-bottom:3px;border-bottom:2.5px solid transparent;transition:.2s;user-select:none;}
-.cat-link:hover,.cat-link.active{color:var(–primary);border-bottom-color:var(–primary);}
-
-/* ── MAIN LAYOUT ── */
-.main{max-width:1300px;margin:28px auto;padding:0 24px;display:flex;gap:26px;}
-.sidebar{width:240px;flex-shrink:0;}
-.content{flex:1;min-width:0;}
-
-/* ── SIDEBAR ── */
-.filter-card{background:var(–surface);border:1px solid var(–border);border-radius:var(–radius);padding:20px;margin-bottom:16px;box-shadow:var(–shadow-sm);}
-.filter-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(–text-muted);margin-bottom:14px;}
-.filter-select,.filter-input{width:100%;padding:11px 13px;border:1.5px solid var(–border);border-radius:var(–radius-sm);background:var(–surface2);color:var(–text);font-family:var(–font-body);font-size:13px;font-weight:600;outline:none;transition:.2s;margin-bottom:10px;}
-.filter-select:last-child,.filter-input:last-child{margin-bottom:0;}
-.filter-select:focus,.filter-input:focus{border-color:var(–primary);}
-.filter-input::placeholder{color:var(–text-muted);font-weight:500;}
-.rating-group{display:flex;flex-direction:column;gap:8px;}
-.rating-option{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:600;}
-.rating-option input{accent-color:var(–primary);width:15px;height:15px;}
-.btn-filter{width:100%;padding:11px;background:var(–primary);color:#fff;border:none;border-radius:var(–radius-sm);font-family:var(–font-body);font-weight:800;font-size:13px;cursor:pointer;transition:.2s;margin-top:4px;}
-.btn-filter:hover{background:var(–primary-dark);transform:translateY(-1px);}
-
-/* ── FLASH SALE BANNER ── */
-.flash-banner{background:linear-gradient(135deg,#1A1A2E 0%,#16213E 50%,#0F3460 100%);border-radius:var(–radius);padding:28px 36px;margin-bottom:24px;color:#fff;display:flex;justify-content:space-between;align-items:center;overflow:hidden;position:relative;}
-.flash-banner::before{content:’’;position:absolute;right:-60px;top:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(238,77,45,.3),transparent 70%);border-radius:50%;}
-.fb-left{}
-.fb-badge{background:var(–primary);color:#fff;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:800;letter-spacing:1px;display:inline-block;margin-bottom:10px;}
-.fb-title{font-family:var(–font-display);font-size:32px;font-weight:800;line-height:1.1;margin-bottom:6px;}
-.fb-sub{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:18px;}
-.btn-flash{background:var(–accent);color:#000;border:none;padding:12px 24px;font-family:var(–font-body);font-weight:800;border-radius:var(–radius-sm);cursor:pointer;font-size:14px;transition:.2s;}
-.btn-flash:hover{background:#FFE033;transform:scale(1.05);}
-.fb-right{text-align:center;z-index:1;}
-.countdown{display:flex;gap:10px;align-items:center;}
-.cd-block{background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;text-align:center;min-width:60px;}
-.cd-num{font-family:var(–font-display);font-size:28px;font-weight:800;color:#fff;line-height:1;}
-.cd-label{font-size:10px;color:rgba(255,255,255,.6);font-weight:700;text-transform:uppercase;margin-top:4px;}
-.cd-sep{font-size:24px;font-weight:800;color:var(–accent);margin-bottom:10px;}
-
-/* ── GRID HEADER ── */
-.grid-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
-.grid-title{font-family:var(–font-display);font-size:20px;font-weight:800;}
-.grid-count{font-size:13px;color:var(–text-muted);font-weight:600;}
-
-/* ── PRODUCT GRID ── */
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;}
-.p-card{background:var(–surface);border:1px solid var(–border);border-radius:var(–radius);overflow:hidden;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;display:flex;flex-direction:column;}
-.p-card:hover{transform:translateY(-7px);box-shadow:var(–shadow-lg);border-color:var(–primary);}
-.p-card-img{height:195px;background:var(–surface2);display:flex;align-items:center;justify-content:center;font-size:85px;position:relative;transition:.3s;flex-shrink:0;}
-.p-card:hover .p-card-img{font-size:95px;}
-.p-badge{position:absolute;top:10px;left:10px;background:var(–primary);color:#fff;padding:3px 9px;border-radius:5px;font-size:10px;font-weight:800;letter-spacing:.5px;}
-.p-badge.new{background:#10B981;}
-.p-badge.hot{background:#EF4444;}
-.p-badge.best{background:#F59E0B;color:#000;}
-.p-badge.premium{background:linear-gradient(135deg,#667eea,#764ba2);}
-.p-badge.promo{background:#EC4899;}
-.p-badge.sale{background:#EF4444;}
-.p-badge.pro{background:#1D4ED8;}
-.p-badge.kids{background:#10B981;}
-.p-badge.investasi{background:linear-gradient(135deg,#f093fb,#f5576c);}
-.p-badge.kesehatan{background:#00B14F;}
-.p-wish{position:absolute;top:10px;right:10px;background:var(–surface);border:1px solid var(–border);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:.25s;box-shadow:var(–shadow-sm);}
-.p-wish:hover,.p-wish.active{transform:scale(1.18);border-color:var(–danger);}
-.p-body{padding:14px;display:flex;flex-direction:column;flex:1;}
-.p-cat{font-size:10px;color:var(–primary);font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px;}
-.p-name{font-size:13px;font-weight:700;line-height:1.45;height:38px;overflow:hidden;margin-bottom:8px;color:var(–text);}
-.p-price{font-size:17px;font-weight:800;color:var(–primary);margin-bottom:2px;}
-.p-orig{font-size:11px;color:var(–text-muted);text-decoration:line-through;margin-bottom:2px;}
-.p-disc{font-size:10px;font-weight:800;color:var(–success);}
-.p-stats{display:flex;justify-content:space-between;font-size:11px;color:var(–text-muted);font-weight:600;margin-top:auto;padding-top:10px;border-top:1px solid var(–border);}
-.btn-add{width:100%;padding:9px;background:var(–primary-light);color:var(–primary);border:1.5px solid var(–primary);border-radius:var(–radius-sm);font-family:var(–font-body);font-weight:800;cursor:pointer;font-size:12.5px;transition:.2s;margin-top:12px;}
-.btn-add:hover{background:var(–primary);color:#fff;}
-
-/* ── LOAD MORE ── */
-.load-more-wrap{text-align:center;margin-top:30px;}
-.btn-load{background:var(–surface);border:2px solid var(–border);color:var(–text);padding:13px 36px;border-radius:50px;font-family:var(–font-body);font-weight:800;cursor:pointer;font-size:14px;transition:.2s;}
-.btn-load:hover{border-color:var(–primary);color:var(–primary);}
-
-/* ── EMPTY STATE ── */
-.empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(–text-muted);}
-.empty-state .es-icon{font-size:64px;margin-bottom:16px;}
-.empty-state h3{font-size:20px;font-weight:800;color:var(–text);margin-bottom:8px;}
-.empty-state p{font-size:14px;}
-
-/* ── OVERLAY ── */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(4px);z-index:1500;opacity:0;pointer-events:none;transition:opacity .3s;}
-.overlay.active{opacity:1;pointer-events:auto;}
-
-/* ── SIDE PANELS ── */
-.panel{position:fixed;top:0;right:-500px;width:440px;max-width:100vw;height:100vh;background:var(–surface);z-index:1600;display:flex;flex-direction:column;transition:right .4s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.25);}
-.panel.open{right:0;}
-.panel-head{padding:20px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(–border);background:var(–surface2);flex-shrink:0;}
-.panel-head-title{font-size:16px;font-weight:800;color:var(–text);}
-.btn-x{background:var(–border);border:none;width:32px;height:32px;border-radius:50%;color:var(–text);cursor:pointer;font-size:14px;font-weight:bold;transition:.2s;display:flex;align-items:center;justify-content:center;}
-.btn-x:hover{background:var(–danger);color:#fff;transform:rotate(90deg);}
-.panel-body{flex:1;overflow-y:auto;padding:20px 22px;}
-.panel-foot{padding:20px 22px;border-top:1px solid var(–border);background:var(–surface2);flex-shrink:0;}
-
-/* ── CART ITEMS ── */
-.cart-item{display:flex;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(–border);}
-.ci-img{width:72px;height:72px;background:var(–surface2);border:1px solid var(–border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;}
-.ci-info{flex:1;min-width:0;}
-.ci-name{font-size:13px;font-weight:700;line-height:1.4;margin-bottom:5px;color:var(–text);}
-.ci-price{font-size:14px;font-weight:800;color:var(–primary);}
-.ci-qty{font-size:12px;color:var(–text-muted);font-weight:500;margin-left:5px;}
-.qty-ctrl{display:flex;align-items:center;gap:8px;margin-top:8px;}
-.qty-btn{background:var(–surface2);border:1px solid var(–border);width:26px;height:26px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:bold;color:var(–text);transition:.2s;display:flex;align-items:center;justify-content:center;}
-.qty-btn:hover{background:var(–primary);color:#fff;border-color:var(–primary);}
-.qty-num{font-size:13px;font-weight:800;color:var(–text);min-width:20px;text-align:center;}
-.btn-rm{background:none;border:none;color:var(–danger);cursor:pointer;font-size:20px;transition:.2s;padding:4px;flex-shrink:0;}
-.btn-rm:hover{transform:scale(1.25);}
-.cart-total-row{display:flex;justify-content:space-between;font-size:16px;font-weight:800;margin-bottom:14px;color:var(–text);}
-.btn-checkout{width:100%;padding:14px;background:var(–primary);color:#fff;border:none;border-radius:10px;font-family:var(–font-body);font-weight:800;font-size:15px;cursor:pointer;transition:.2s;}
-.btn-checkout:hover{background:var(–primary-dark);transform:translateY(-2px);box-shadow:0 6px 18px rgba(238,77,45,.35);}
-
-/* ── WISHLIST ── */
-.wi-img{width:72px;height:72px;background:var(–surface2);border:1px solid var(–border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;}
-
-/* ── MODALS ── */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s;padding:20px;}
-.modal.active{opacity:1;pointer-events:auto;}
-.modal-box{background:var(–surface);border:1px solid var(–border);border-radius:20px;width:100%;position:relative;box-shadow:var(–shadow-lg);transform:translateY(-20px) scale(.97);transition:.35s cubic-bezier(.4,0,.2,1);}
-.modal.active .modal-box{transform:translateY(0) scale(1);}
-.modal-close{position:absolute;top:18px;right:18px;background:var(–surface2);border:1px solid var(–border);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:13px;font-weight:bold;color:var(–text);transition:.2s;display:flex;align-items:center;justify-content:center;z-index:5;}
-.modal-close:hover{background:var(–danger);color:#fff;transform:rotate(90deg);}
-
-/* AUTH MODAL */
-.auth-box{max-width:420px;padding:36px;}
-.auth-icon{font-size:52px;text-align:center;margin-bottom:12px;}
-.auth-title{font-family:var(–font-display);font-size:24px;font-weight:800;text-align:center;margin-bottom:5px;}
-.auth-sub{font-size:13px;color:var(–text-muted);text-align:center;margin-bottom:26px;}
-.form-group{margin-bottom:15px;}
-.form-label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:var(–text);}
-.form-field{width:100%;padding:13px 16px;border:1.5px solid var(–border);border-radius:var(–radius-sm);background:var(–surface2);color:var(–text);font-family:var(–font-body);font-size:14px;outline:none;transition:.2s;}
-.form-field:focus{border-color:var(–primary);}
-.form-field::placeholder{color:var(–text-muted);}
-
-/* QUICK VIEW MODAL */
-.qv-box{max-width:880px;padding:32px;display:grid;grid-template-columns:1fr 1.2fr;gap:30px;}
-.qv-img-wrap{background:var(–surface2);border-radius:14px;border:1px solid var(–border);display:flex;align-items:center;justify-content:center;font-size:140px;min-height:340px;}
-.qv-cat{font-size:11px;color:var(–primary);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
-.qv-name{font-family:var(–font-display);font-size:26px;font-weight:800;line-height:1.2;margin-bottom:14px;color:var(–text);}
-.qv-pricing{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;}
-.qv-price{font-size:32px;font-weight:800;color:var(–primary);}
-.qv-orig{font-size:14px;color:var(–text-muted);text-decoration:line-through;}
-.qv-disc{font-size:13px;font-weight:800;color:var(–success);}
-.qv-desc{font-size:14px;line-height:1.75;color:var(–text-muted);margin-bottom:20px;}
-.qv-meta{display:flex;gap:20px;margin-bottom:20px;font-size:13px;font-weight:700;}
-.qv-meta span{color:var(–text-muted);}
-.qv-meta strong{color:var(–text);}
-.reviews{background:var(–surface2);border-radius:12px;padding:16px;margin-bottom:24px;}
-.review-title{font-size:14px;font-weight:800;margin-bottom:12px;}
-.review-item{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(–border);}
-.review-item:last-child{margin:0;padding:0;border:none;}
-.review-user{font-size:12.5px;font-weight:700;margin-bottom:4px;}
-.review-text{font-size:12.5px;color:var(–text-muted);line-height:1.6;}
-.qv-actions{display:flex;gap:12px;}
-.btn-qv-cart{flex:1;padding:14px;background:var(–primary);color:#fff;border:none;border-radius:10px;font-family:var(–font-body);font-weight:800;font-size:14px;cursor:pointer;transition:.2s;}
-.btn-qv-cart:hover{background:var(–primary-dark);}
-.btn-qv-wish{width:52px;height:52px;background:var(–surface2);border:1.5px solid var(–border);border-radius:10px;cursor:pointer;font-size:20px;transition:.2s;display:flex;align-items:center;justify-content:center;}
-.btn-qv-wish:hover{border-color:var(–danger);}
-
-/* CHECKOUT MODAL */
-.ck-box{max-width:820px;max-height:90vh;overflow-y:auto;padding:32px;}
-.ck-title{font-family:var(–font-display);font-size:24px;font-weight:800;margin-bottom:8px;}
-.ck-sub{font-size:13px;color:var(–text-muted);margin-bottom:24px;}
-.ck-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;}
-.section-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(–text-muted);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-.section-label::after{content:’’;flex:1;height:1px;background:var(–border);}
-.pay-methods{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
-.pay-opt{display:flex;align-items:center;gap:12px;padding:13px 16px;border:2px solid var(–border);border-radius:10px;cursor:pointer;transition:.2s;font-weight:700;font-size:13.5px;}
-.pay-opt:hover{border-color:var(–primary);background:var(–primary-light);}
-.pay-opt.selected{border-color:var(–primary);background:var(–primary-light);}
-.pay-opt input[type=radio]{accent-color:var(–primary);width:16px;height:16px;}
-.pay-icon{font-size:22px;}
-.pay-name{font-weight:800;font-size:13px;}
-.pay-desc{font-size:11px;color:var(–text-muted);font-weight:500;}
-.ck-summary{background:var(–surface2);border-radius:12px;padding:18px;}
-.sum-title{font-weight:800;font-size:14px;margin-bottom:14px;}
-.sum-item{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;color:var(–text-muted);}
-.sum-item.total{color:var(–text);font-weight:800;font-size:16px;border-top:1px solid var(–border);padding-top:12px;margin-top:12px;}
-.sum-item.total .sum-val{color:var(–primary);font-size:18px;}
-.btn-pay{width:100%;padding:15px;background:var(–primary);color:#fff;border:none;border-radius:10px;font-family:var(–font-body);font-weight:800;font-size:15px;cursor:pointer;transition:.2s;margin-top:18px;}
-.btn-pay:hover{background:var(–primary-dark);transform:translateY(-2px);box-shadow:0 6px 18px rgba(238,77,45,.35);}
-
-/* QRIS MODAL */
-.qris-box{max-width:440px;padding:32px;text-align:center;}
-.qris-title{font-family:var(–font-display);font-size:22px;font-weight:800;margin-bottom:6px;}
-.qris-sub{font-size:13px;color:var(–text-muted);margin-bottom:20px;}
-.qris-img-wrap{border:3px solid var(–primary);border-radius:16px;overflow:hidden;margin:0 auto 20px;width:280px;height:280px;display:flex;align-items:center;justify-content:center;background:var(–surface2);}
-.qris-img-wrap img{width:100%;height:100%;object-fit:contain;}
-.qris-amount{font-size:28px;font-weight:800;color:var(–primary);margin-bottom:8px;}
-.qris-note{font-size:12px;color:var(–text-muted);margin-bottom:20px;line-height:1.6;}
-.btn-qris-done{width:100%;padding:14px;background:var(–success);color:#fff;border:none;border-radius:10px;font-family:var(–font-body);font-weight:800;font-size:15px;cursor:pointer;transition:.2s;}
-.btn-qris-done:hover{background:#008f3e;}
-
-/* PROFILE MODAL */
-.prof-box{max-width:380px;padding:36px;text-align:center;}
-.prof-avatar{font-size:68px;margin-bottom:12px;}
-.prof-name{font-family:var(–font-display);font-size:24px;font-weight:800;margin-bottom:5px;}
-.prof-sub{font-size:13px;color:var(–text-muted);margin-bottom:24px;}
-.btn-logout{width:100%;padding:13px;background:var(–danger);color:#fff;border:none;border-radius:10px;font-family:var(–font-body);font-weight:800;cursor:pointer;transition:.2s;}
-.btn-logout:hover{background:#c53030;}
-
-/* TOAST */
-#toast-wrap{position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none;}
-.toast{background:var(–surface);border:1px solid var(–border);border-left:5px solid var(–success);color:var(–text);padding:14px 18px;border-radius:10px;box-shadow:var(–shadow-lg);display:flex;align-items:center;gap:12px;font-weight:700;font-size:13.5px;animation:toastIn .3s cubic-bezier(.4,0,.2,1);pointer-events:auto;min-width:280px;max-width:360px;}
-.toast.error{border-left-color:var(–danger);}
-.toast.info{border-left-color:var(–info);}
-.toast.warn{border-left-color:#F59E0B;}
-.toast-icon{font-size:20px;flex-shrink:0;}
-.toast-msg{flex:1;}
-.toast-close{background:none;border:none;color:var(–text-muted);cursor:pointer;font-size:16px;transition:.2s;padding:0 4px;}
-.toast-close:hover{color:var(–danger);}
-@keyframes toastIn{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
-
-/* RESPONSIVE */
-@media(max-width:1024px){
-.qv-box{grid-template-columns:1fr;max-width:600px;}
-.qv-img-wrap{min-height:220px;font-size:100px;}
-.ck-grid{grid-template-columns:1fr;}
-}
-@media(max-width:900px){
-.main{flex-direction:column;}
-.sidebar{width:100%;}
-.flash-banner{flex-direction:column;gap:20px;text-align:center;}
-.product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
-}
-@media(max-width:600px){
-.nav-inner{gap:10px;height:60px;}
-.logo{font-size:22px;}
-.search-btn{padding:0 14px;}
-.nb-label{display:none;}
-.product-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
-.fb-title{font-size:24px;}
-.qv-box{padding:20px;grid-template-columns:1fr;}
-.ck-box{padding:20px;}
-}
-</style>
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- PROMO STRIP -->
+  <!-- ══════════════════════════════════
+       PROMO STRIP
+       ══════════════════════════════════ -->
 
-<div class="promo-strip">⚡ FLASH SALE — Diskon hingga 70%! Gratis Ongkir min. belanja Rp50.000 &nbsp;|&nbsp; Kode: SHOPNOW10</div>
-
-<!-- NAVBAR -->
-
-<nav class="navbar">
-  <div class="nav-inner">
-    <a class="logo" onclick="resetPage()">Shop<span>Now</span></a>
-    <div class="search-wrap">
-      <input type="text" id="searchInput" placeholder="Cari produk..." autocomplete="off" onkeyup="handleSearch(event)">
-      <button class="search-btn" onclick="doSearch()">🔍 Cari</button>
-    </div>
-    <div class="nav-actions">
-      <button class="nav-btn" onclick="toggleTheme()" title="Ganti Tema">
-        <span class="nb-icon" id="themeIcon">🌙</span>
-        <span class="nb-label">Tema</span>
-      </button>
-      <button class="nav-btn" onclick="openWishlist()" title="Wishlist">
-        <span class="nb-icon">❤️</span>
-        <span class="nb-label">Wishlist</span>
-        <span class="nav-badge" id="wishBadge">0</span>
-      </button>
-      <button class="nav-btn" onclick="openCart()" title="Keranjang">
-        <span class="nb-icon">🛒</span>
-        <span class="nb-label">Keranjang</span>
-        <span class="nav-badge" id="cartBadge">0</span>
-      </button>
-      <button class="nav-btn" onclick="openAuth()" title="Akun">
-        <span class="nb-icon">👤</span>
-        <span class="nb-label" id="userLabel">Masuk</span>
-      </button>
-    </div>
+  <div class="promo-strip">
+    ⚡ FLASH SALE — Diskon hingga 70%! Gratis Ongkir min. belanja Rp50.000 &nbsp;|&nbsp; Kode: <strong>SHOPNOW10</strong>
   </div>
-</nav>
 
-<!-- CATEGORY BAR -->
+  <!-- ══════════════════════════════════
+       NAVBAR
+       ══════════════════════════════════ -->
 
-<div class="cat-bar">
-  <div class="cat-inner" id="catBar">
-    <span class="cat-link active" onclick="setCategory('Semua',this)">🏠 Semua</span>
-    <span class="cat-link" onclick="setCategory('Elektronik',this)">📱 Elektronik</span>
-    <span class="cat-link" onclick="setCategory('Kecantikan',this)">💄 Kecantikan</span>
-    <span class="cat-link" onclick="setCategory('Fashion',this)">👗 Fashion</span>
-    <span class="cat-link" onclick="setCategory('Hobi & Musik',this)">🎹 Hobi & Musik</span>
-    <span class="cat-link" onclick="setCategory('Hewan Peliharaan',this)">🐾 Hewan Peliharaan</span>
-    <span class="cat-link" onclick="setCategory('Properti',this)">🏡 Properti</span>
-  </div>
-</div>
-
-<!-- MAIN -->
-
-<div class="main">
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="filter-card">
-      <div class="filter-title">Urutkan</div>
-      <select id="sortSelect" class="filter-select" onchange="applyFilters()">
-        <option value="populer">🔥 Terpopuler</option>
-        <option value="termurah">💰 Termurah</option>
-        <option value="termahal">💎 Termahal</option>
-        <option value="terbaru">🆕 Terbaru</option>
-        <option value="rating">⭐ Rating Tertinggi</option>
-      </select>
-    </div>
-    <div class="filter-card">
-      <div class="filter-title">Filter Harga</div>
-      <input type="number" id="minPrice" class="filter-input" placeholder="Min (Rp)" oninput="applyFilters()">
-      <input type="number" id="maxPrice" class="filter-input" placeholder="Max (Rp)" oninput="applyFilters()">
-    </div>
-    <div class="filter-card">
-      <div class="filter-title">Rating Minimal</div>
-      <div class="rating-group">
-        <label class="rating-option"><input type="radio" name="ratingFilter" value="0" checked onchange="applyFilters()"> Semua Rating</label>
-        <label class="rating-option"><input type="radio" name="ratingFilter" value="4" onchange="applyFilters()"> ⭐ 4.0+</label>
-        <label class="rating-option"><input type="radio" name="ratingFilter" value="4.5" onchange="applyFilters()"> ⭐ 4.5+</label>
-        <label class="rating-option"><input type="radio" name="ratingFilter" value="4.8" onchange="applyFilters()"> ⭐ 4.8+</label>
-      </div>
-    </div>
-    <div class="filter-card">
-      <button class="btn-filter" onclick="resetFilters()">🔄 Reset Filter</button>
-    </div>
-  </aside>
-
-  <!-- CONTENT -->
-
-  <main class="content">
-    <!-- FLASH BANNER -->
-    <div class="flash-banner">
-      <div class="fb-left">
-        <div class="fb-badge">⚡ FLASH SALE HARI INI</div>
-        <div class="fb-title">Belanja Makin Hemat,<br>Diskon Gila-gilaan!</div>
-        <div class="fb-sub">Ribuan produk pilihan dengan harga terbaik.</div>
-        <button class="btn-flash" onclick="setCategory('Elektronik', document.querySelectorAll('.cat-link')[1])">Belanja Sekarang →</button>
-      </div>
-      <div class="fb-right">
-        <div style="color:rgba(255,255,255,.7);font-size:12px;font-weight:700;margin-bottom:10px;text-align:center;">BERAKHIR DALAM</div>
-        <div class="countdown">
-          <div class="cd-block"><div class="cd-num" id="cdH">00</div><div class="cd-label">Jam</div></div>
-          <div class="cd-sep">:</div>
-          <div class="cd-block"><div class="cd-num" id="cdM">00</div><div class="cd-label">Menit</div></div>
-          <div class="cd-sep">:</div>
-          <div class="cd-block"><div class="cd-num" id="cdS">00</div><div class="cd-label">Detik</div></div>
-        </div>
-      </div>
-    </div>
+  <nav class="navbar" role="navigation" aria-label="Navigasi Utama">
+    <div class="nav-inner">
 
 ```
-<!-- GRID -->
-<div class="grid-header">
-  <div class="grid-title" id="gridTitle">✨ Semua Produk</div>
-  <div class="grid-count" id="gridCount"></div>
-</div>
-<div class="product-grid" id="productGrid"></div>
-<div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
-  <button class="btn-load" onclick="loadMore()">Tampilkan Lebih Banyak ↓</button>
-</div>
+  <!-- Logo -->
+  <a class="logo" onclick="resetPage()" href="#" title="ShopNow — Halaman Utama">
+    Shop<span>Now</span>
+  </a>
+
+  <!-- Search Bar -->
+  <div class="search-wrap" role="search">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Cari produk, kategori..."
+      autocomplete="off"
+      aria-label="Cari produk"
+      onkeyup="handleSearch(event)"
+    >
+    <button class="search-btn" onclick="doSearch()" aria-label="Cari">
+      🔍 Cari
+    </button>
+  </div>
+
+  <!-- Nav Actions -->
+  <div class="nav-actions">
+
+    <!-- Theme Toggle -->
+    <button class="nav-btn" onclick="toggleTheme()" title="Ganti Tema" aria-label="Ganti Tema">
+      <span class="nb-icon" id="themeIcon">🌙</span>
+      <span class="nb-label">Tema</span>
+    </button>
+
+    <!-- Wishlist -->
+    <button class="nav-btn" onclick="openWishlist()" title="Wishlist" aria-label="Buka Wishlist">
+      <span class="nb-icon">❤️</span>
+      <span class="nb-label">Wishlist</span>
+      <span class="nav-badge" id="wishBadge" aria-label="Jumlah wishlist">0</span>
+    </button>
+
+    <!-- Cart -->
+    <button class="nav-btn" onclick="openCart()" title="Keranjang" aria-label="Buka Keranjang">
+      <span class="nb-icon">🛒</span>
+      <span class="nb-label">Keranjang</span>
+      <span class="nav-badge" id="cartBadge" aria-label="Jumlah keranjang">0</span>
+    </button>
+
+    <!-- Account -->
+    <button class="nav-btn" onclick="openAuth()" title="Akun Saya" aria-label="Akun Saya">
+      <span class="nb-icon">👤</span>
+      <span class="nb-label" id="userLabel">Masuk</span>
+    </button>
+
+  </div><!-- /.nav-actions -->
+</div><!-- /.nav-inner -->
 ```
 
-  </main>
-</div>
+  </nav>
 
-<!-- OVERLAY -->
+  <!-- ══════════════════════════════════
+       CATEGORY BAR
+       ══════════════════════════════════ -->
 
-<div class="overlay" id="overlay" onclick="closeAll()"></div>
-
-<!-- CART PANEL -->
-
-<div class="panel" id="cartPanel">
-  <div class="panel-head">
-    <div class="panel-head-title">🛒 Keranjang Belanja</div>
-    <button class="btn-x" onclick="closeAll()">✕</button>
-  </div>
-  <div class="panel-body" id="cartBody"></div>
-  <div class="panel-foot" id="cartFoot" style="display:none;">
-    <div class="cart-total-row"><span>Total Belanja</span><span id="cartTotalText" style="color:var(--primary);">Rp0</span></div>
-    <button class="btn-checkout" onclick="openCheckout()">Lanjut ke Pembayaran 💳</button>
-  </div>
-</div>
-
-<!-- WISHLIST PANEL -->
-
-<div class="panel" id="wishPanel">
-  <div class="panel-head">
-    <div class="panel-head-title">❤️ Wishlist Saya</div>
-    <button class="btn-x" onclick="closeAll()">✕</button>
-  </div>
-  <div class="panel-body" id="wishBody"></div>
-</div>
-
-<!-- LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-  <div class="modal-box auth-box">
-    <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
-    <div class="auth-icon">👋</div>
-    <div class="auth-title">Masuk ke Akun</div>
-    <div class="auth-sub">Belanja jadi lebih mudah & aman!</div>
-    <div class="form-group">
-      <label class="form-label">Nama / Username</label>
-      <input type="text" class="form-field" id="loginName" placeholder="Contoh: Budi Santoso" onkeyup="if(event.key==='Enter')doLogin()">
+  <div class="cat-bar" role="navigation" aria-label="Kategori Produk">
+    <div class="cat-inner" id="catBar">
+      <span class="cat-link active"  onclick="setCategory('Semua', this)">🏠 Semua</span>
+      <span class="cat-link"         onclick="setCategory('Elektronik', this)">📱 Elektronik</span>
+      <span class="cat-link"         onclick="setCategory('Kecantikan', this)">💄 Kecantikan</span>
+      <span class="cat-link"         onclick="setCategory('Fashion', this)">👗 Fashion</span>
+      <span class="cat-link"         onclick="setCategory('Hobi & Musik', this)">🎹 Hobi & Musik</span>
+      <span class="cat-link"         onclick="setCategory('Hewan Peliharaan', this)">🐾 Hewan Peliharaan</span>
+      <span class="cat-link"         onclick="setCategory('Properti', this)">🏡 Properti</span>
     </div>
-    <div class="form-group">
-      <label class="form-label">Kata Sandi</label>
-      <input type="password" class="form-field" id="loginPass" placeholder="Minimal 6 karakter" onkeyup="if(event.key==='Enter')doLogin()">
-    </div>
-    <button class="btn-checkout" style="margin-top:8px;" onclick="doLogin()">Masuk Sekarang 🚀</button>
   </div>
-</div>
 
-<!-- PROFILE MODAL -->
+  <!-- ══════════════════════════════════
+       MAIN CONTENT AREA
+       ══════════════════════════════════ -->
 
-<div class="modal" id="profileModal">
-  <div class="modal-box prof-box">
-    <button class="modal-close" onclick="closeModal('profileModal')">✕</button>
-    <div class="prof-avatar">👤</div>
-    <div class="prof-name" id="profName">Halo!</div>
-    <div class="prof-sub">Selamat datang kembali di ShopNow.</div>
-    <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:18px;text-align:left;">
-      <div style="font-size:12px;color:var(--text-muted);font-weight:700;margin-bottom:8px;">RINGKASAN AKUN</div>
-      <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;">
-        <span>Item di keranjang</span><span id="profCartCount" style="color:var(--primary);">0</span>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-top:8px;">
-        <span>Item di wishlist</span><span id="profWishCount" style="color:var(--danger);">0</span>
-      </div>
-    </div>
-    <button class="btn-logout" onclick="doLogout()">Keluar Akun 🚪</button>
-  </div>
-</div>
-
-<!-- QUICK VIEW MODAL -->
-
-<div class="modal" id="qvModal">
-  <div class="modal-box qv-box" id="qvContent">
-    <button class="modal-close" onclick="closeModal('qvModal')">✕</button>
-  </div>
-</div>
-
-<!-- CHECKOUT MODAL -->
-
-<div class="modal" id="checkoutModal">
-  <div class="modal-box ck-box">
-    <button class="modal-close" onclick="closeModal('checkoutModal')">✕</button>
-    <div class="ck-title">💳 Kasir Digital</div>
-    <div class="ck-sub">Lengkapi data pengiriman & pilih metode pembayaran.</div>
+  <div class="main">
 
 ```
-<div class="ck-grid">
-  <div>
-    <div class="section-label">Data Pengiriman</div>
-    <div class="form-group">
-      <label class="form-label">Nama Penerima</label>
-      <input type="text" class="form-field" id="ckName" placeholder="Nama lengkap penerima">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Nomor HP / WhatsApp</label>
-      <input type="tel" class="form-field" id="ckPhone" placeholder="Contoh: 08123456789">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Alamat Lengkap</label>
-      <textarea class="form-field" id="ckAddress" rows="3" placeholder="Jalan, RT/RW, Kelurahan, Kota, Kode Pos"></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Catatan Pesanan (Opsional)</label>
-      <input type="text" class="form-field" id="ckNote" placeholder="Misal: Warna biru, ukuran M...">
-    </div>
+<!-- ── SIDEBAR / FILTERS ── -->
+<aside class="sidebar" aria-label="Filter Produk">
 
-    <div class="section-label" style="margin-top:20px;">Metode Pembayaran</div>
-    <div class="pay-methods">
-      <label class="pay-opt selected" id="payOptWA" onclick="selectPay('whatsapp', this)">
-        <input type="radio" name="payMethod" value="whatsapp" checked>
-        <span class="pay-icon">📱</span>
-        <div><div class="pay-name">Transfer Bank / E-Wallet</div><div class="pay-desc">Konfirmasi via WhatsApp otomatis</div></div>
+  <!-- Sort -->
+  <div class="filter-card">
+    <div class="filter-title">Urutkan</div>
+    <select id="sortSelect" class="filter-select" onchange="applyFilters()" aria-label="Urutkan produk">
+      <option value="populer">🔥 Terpopuler</option>
+      <option value="termurah">💰 Termurah</option>
+      <option value="termahal">💎 Termahal</option>
+      <option value="terbaru">🆕 Terbaru</option>
+      <option value="rating">⭐ Rating Tertinggi</option>
+    </select>
+  </div>
+
+  <!-- Price Filter -->
+  <div class="filter-card">
+    <div class="filter-title">Filter Harga</div>
+    <input
+      type="number"
+      id="minPrice"
+      class="filter-input"
+      placeholder="Min (Rp)"
+      min="0"
+      oninput="applyFilters()"
+      aria-label="Harga minimum"
+    >
+    <input
+      type="number"
+      id="maxPrice"
+      class="filter-input"
+      placeholder="Max (Rp)"
+      min="0"
+      oninput="applyFilters()"
+      aria-label="Harga maksimum"
+    >
+  </div>
+
+  <!-- Rating Filter -->
+  <div class="filter-card">
+    <div class="filter-title">Rating Minimal</div>
+    <div class="rating-group" role="radiogroup" aria-label="Filter rating">
+      <label class="rating-option">
+        <input type="radio" name="ratingFilter" value="0"   checked onchange="applyFilters()"> Semua Rating
       </label>
-      <label class="pay-opt" id="payOptQR" onclick="selectPay('qris', this)">
-        <input type="radio" name="payMethod" value="qris">
-        <span class="pay-icon">📷</span>
-        <div><div class="pay-name">QRIS — Scan & Pay</div><div class="pay-desc">Semua dompet digital diterima</div></div>
+      <label class="rating-option">
+        <input type="radio" name="ratingFilter" value="4"         onchange="applyFilters()"> ⭐ 4.0+
       </label>
-      <label class="pay-opt" id="payOptCOD" onclick="selectPay('cod', this)">
-        <input type="radio" name="payMethod" value="cod">
-        <span class="pay-icon">🚚</span>
-        <div><div class="pay-name">COD (Bayar di Tempat)</div><div class="pay-desc">Bayar saat barang tiba</div></div>
+      <label class="rating-option">
+        <input type="radio" name="ratingFilter" value="4.5"       onchange="applyFilters()"> ⭐ 4.5+
+      </label>
+      <label class="rating-option">
+        <input type="radio" name="ratingFilter" value="4.8"       onchange="applyFilters()"> ⭐ 4.8+
       </label>
     </div>
   </div>
 
-  <div>
-    <div class="section-label">Ringkasan Pesanan</div>
-    <div class="ck-summary">
-      <div class="sum-title">🛍️ Detail Pesanan</div>
-      <div id="ckItems"></div>
-      <div class="sum-item">
-        <span>Subtotal</span><span id="ckSubtotal">Rp0</span>
-      </div>
-      <div class="sum-item">
-        <span>Ongkir (estimasi)</span><span style="color:var(--success);">GRATIS</span>
-      </div>
-      <div class="sum-item">
-        <span>Biaya Layanan</span><span>Rp2.500</span>
-      </div>
-      <div class="sum-item total">
-        <span>Total Bayar</span><span class="sum-val" id="ckTotal">Rp0</span>
+  <!-- Reset -->
+  <div class="filter-card">
+    <button class="btn-filter" onclick="resetFilters()">🔄 Reset Filter</button>
+  </div>
+
+</aside>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="content" role="main">
+
+  <!-- Flash Sale Banner -->
+  <div class="flash-banner" aria-label="Flash Sale">
+    <div class="fb-left">
+      <div class="fb-badge">⚡ FLASH SALE HARI INI</div>
+      <div class="fb-title">Belanja Makin Hemat,<br>Diskon Gila-gilaan!</div>
+      <div class="fb-sub">Ribuan produk pilihan dengan harga terbaik.</div>
+      <button class="btn-flash" onclick="setCategory('Elektronik', document.querySelectorAll('.cat-link')[1])">
+        Belanja Sekarang →
+      </button>
+    </div>
+    <div class="fb-right">
+      <div style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:700;margin-bottom:10px;">BERAKHIR DALAM</div>
+      <div class="countdown" aria-live="polite" aria-label="Hitung mundur flash sale">
+        <div class="cd-block">
+          <div class="cd-num" id="cdH">00</div>
+          <div class="cd-label">Jam</div>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-block">
+          <div class="cd-num" id="cdM">00</div>
+          <div class="cd-label">Menit</div>
+        </div>
+        <div class="cd-sep" aria-hidden="true">:</div>
+        <div class="cd-block">
+          <div class="cd-num" id="cdS">00</div>
+          <div class="cd-label">Detik</div>
+        </div>
       </div>
     </div>
-    <button class="btn-pay" onclick="processPayment()">Bayar Sekarang 🎉</button>
   </div>
+
+  <!-- Product Grid Header -->
+  <div class="grid-header">
+    <div class="grid-title" id="gridTitle">✨ Semua Produk</div>
+    <div class="grid-count" id="gridCount" aria-live="polite"></div>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid" id="productGrid" role="list" aria-label="Daftar Produk"></div>
+
+  <!-- Load More -->
+  <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+    <button class="btn-load" onclick="loadMore()">Tampilkan Lebih Banyak ↓</button>
+  </div>
+
+</main>
+```
+
+  </div><!-- /.main -->
+
+  <!-- ══════════════════════════════════
+       OVERLAY (closes panels)
+       ══════════════════════════════════ -->
+
+  <div class="overlay" id="overlay" onclick="closeAll()" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════
+       CART PANEL
+       ══════════════════════════════════ -->
+
+  <div class="panel" id="cartPanel" role="dialog" aria-label="Keranjang Belanja" aria-modal="true">
+    <div class="panel-head">
+      <div class="panel-head-title">🛒 Keranjang Belanja</div>
+      <button class="btn-x" onclick="closeAll()" aria-label="Tutup keranjang">✕</button>
+    </div>
+    <div class="panel-body" id="cartBody"></div>
+    <div class="panel-foot" id="cartFoot" style="display:none;">
+      <div class="cart-total-row">
+        <span>Total Belanja</span>
+        <span id="cartTotalText" style="color:var(--primary);">Rp0</span>
+      </div>
+      <button class="btn-checkout" onclick="openCheckout()">Lanjut ke Pembayaran 💳</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       WISHLIST PANEL
+       ══════════════════════════════════ -->
+
+  <div class="panel" id="wishPanel" role="dialog" aria-label="Wishlist" aria-modal="true">
+    <div class="panel-head">
+      <div class="panel-head-title">❤️ Wishlist Saya</div>
+      <button class="btn-x" onclick="closeAll()" aria-label="Tutup wishlist">✕</button>
+    </div>
+    <div class="panel-body" id="wishBody"></div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       LOGIN MODAL
+       ══════════════════════════════════ -->
+
+  <div class="modal" id="loginModal" role="dialog" aria-label="Masuk ke Akun" aria-modal="true">
+    <div class="modal-box auth-box">
+      <button class="modal-close" onclick="closeModal('loginModal')" aria-label="Tutup">✕</button>
+      <div class="auth-icon">👋</div>
+      <div class="auth-title">Masuk ke Akun</div>
+      <div class="auth-sub">Belanja jadi lebih mudah &amp; aman!</div>
+      <div class="form-group">
+        <label class="form-label" for="loginName">Nama / Username</label>
+        <input
+          type="text"
+          class="form-field"
+          id="loginName"
+          placeholder="Contoh: Budi Santoso"
+          autocomplete="name"
+          onkeyup="if(event.key==='Enter') doLogin()"
+        >
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="loginPass">Kata Sandi</label>
+        <input
+          type="password"
+          class="form-field"
+          id="loginPass"
+          placeholder="Minimal 3 karakter"
+          autocomplete="current-password"
+          onkeyup="if(event.key==='Enter') doLogin()"
+        >
+      </div>
+      <button class="btn-checkout" style="margin-top:8px;" onclick="doLogin()">Masuk Sekarang 🚀</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PROFILE MODAL
+       ══════════════════════════════════ -->
+
+  <div class="modal" id="profileModal" role="dialog" aria-label="Profil Akun" aria-modal="true">
+    <div class="modal-box prof-box">
+      <button class="modal-close" onclick="closeModal('profileModal')" aria-label="Tutup">✕</button>
+      <div class="prof-avatar">👤</div>
+      <div class="prof-name" id="profName">Halo!</div>
+      <div class="prof-sub">Selamat datang kembali di ShopNow.</div>
+      <div class="account-summary">
+        <div class="account-summary-title">Ringkasan Akun</div>
+        <div class="account-summary-row">
+          <span>Item di keranjang</span>
+          <span id="profCartCount" style="color:var(--primary);">0</span>
+        </div>
+        <div class="account-summary-row">
+          <span>Item di wishlist</span>
+          <span id="profWishCount" style="color:var(--danger);">0</span>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="doLogout()">Keluar Akun 🚪</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       QUICK VIEW MODAL
+       ══════════════════════════════════ -->
+
+  <div class="modal" id="qvModal" role="dialog" aria-label="Detail Produk" aria-modal="true">
+    <div class="modal-box qv-box" id="qvContent">
+      <button class="modal-close" onclick="closeModal('qvModal')" aria-label="Tutup">✕</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       CHECKOUT MODAL
+       ══════════════════════════════════ -->
+
+  <div class="modal" id="checkoutModal" role="dialog" aria-label="Kasir Digital" aria-modal="true">
+    <div class="modal-box ck-box">
+      <button class="modal-close" onclick="closeModal('checkoutModal')" aria-label="Tutup">✕</button>
+
+```
+  <div class="ck-title">💳 Kasir Digital</div>
+  <div class="ck-sub">Lengkapi data pengiriman &amp; pilih metode pembayaran.</div>
+
+  <div class="ck-grid">
+
+    <!-- Left: Delivery + Payment -->
+    <div>
+      <div class="section-label">Data Pengiriman</div>
+
+      <div class="form-group">
+        <label class="form-label" for="ckName">Nama Penerima</label>
+        <input type="text" class="form-field" id="ckName" placeholder="Nama lengkap penerima" autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ckPhone">Nomor HP / WhatsApp</label>
+        <input type="tel" class="form-field" id="ckPhone" placeholder="Contoh: 08123456789" autocomplete="tel">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ckAddress">Alamat Lengkap</label>
+        <textarea class="form-field" id="ckAddress" rows="3" placeholder="Jalan, RT/RW, Kelurahan, Kota, Kode Pos"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ckNote">Catatan Pesanan (Opsional)</label>
+        <input type="text" class="form-field" id="ckNote" placeholder="Misal: Warna biru, ukuran M...">
+      </div>
+
+      <div class="section-label" style="margin-top:20px;">Metode Pembayaran</div>
+
+      <div class="pay-methods" role="radiogroup" aria-label="Pilih metode pembayaran">
+
+        <label class="pay-opt selected" id="payOptWA" onclick="selectPay('whatsapp', this)">
+          <input type="radio" name="payMethod" value="whatsapp" checked>
+          <span class="pay-icon">📱</span>
+          <div>
+            <div class="pay-name">Transfer Bank / E-Wallet</div>
+            <div class="pay-desc">Konfirmasi via WhatsApp otomatis</div>
+          </div>
+        </label>
+
+        <label class="pay-opt" id="payOptQR" onclick="selectPay('qris', this)">
+          <input type="radio" name="payMethod" value="qris">
+          <span class="pay-icon">📷</span>
+          <div>
+            <div class="pay-name">QRIS — Scan &amp; Pay</div>
+            <div class="pay-desc">Semua dompet digital diterima</div>
+          </div>
+        </label>
+
+        <label class="pay-opt" id="payOptCOD" onclick="selectPay('cod', this)">
+          <input type="radio" name="payMethod" value="cod">
+          <span class="pay-icon">🚚</span>
+          <div>
+            <div class="pay-name">COD (Bayar di Tempat)</div>
+            <div class="pay-desc">Bayar saat barang tiba</div>
+          </div>
+        </label>
+
+      </div><!-- /.pay-methods -->
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div>
+      <div class="section-label">Ringkasan Pesanan</div>
+      <div class="ck-summary">
+        <div class="sum-title">🛍️ Detail Pesanan</div>
+        <div id="ckItems"></div>
+        <div class="sum-item">
+          <span>Subtotal</span>
+          <span id="ckSubtotal">Rp0</span>
+        </div>
+        <div class="sum-item">
+          <span>Ongkir (estimasi)</span>
+          <span style="color:var(--success);font-weight:700;">GRATIS</span>
+        </div>
+        <div class="sum-item">
+          <span>Biaya Layanan</span>
+          <span>Rp2.500</span>
+        </div>
+        <div class="sum-item total">
+          <span>Total Bayar</span>
+          <span class="sum-val" id="ckTotal">Rp0</span>
+        </div>
+      </div>
+      <button class="btn-pay" onclick="processPayment()">Bayar Sekarang 🎉</button>
+    </div>
+
+  </div><!-- /.ck-grid -->
 </div>
 ```
 
   </div>
-</div>
 
-<!-- QRIS MODAL -->
+  <!-- ══════════════════════════════════
+       QRIS MODAL
+       ══════════════════════════════════ -->
 
-<div class="modal" id="qrisModal">
-  <div class="modal-box qris-box">
-    <button class="modal-close" onclick="closeModal('qrisModal')">✕</button>
-    <div class="qris-title">📷 Bayar dengan QRIS</div>
-    <div class="qris-sub">Scan kode QR di bawah menggunakan aplikasi dompet digital apapun.</div>
-    <div class="qris-img-wrap">
-      <img src="https://yaffblog.wordpress.com/wp-content/uploads/2026/04/img_3744.jpeg" alt="QRIS ShopNow" onerror="this.parentNode.innerHTML='<div style=\'font-size:80px;\'>📷</div>'">
+  <div class="modal" id="qrisModal" role="dialog" aria-label="Bayar dengan QRIS" aria-modal="true">
+    <div class="modal-box qris-box">
+      <button class="modal-close" onclick="closeModal('qrisModal')" aria-label="Tutup">✕</button>
+      <div class="qris-title">📷 Bayar dengan QRIS</div>
+      <div class="qris-sub">Scan kode QR di bawah menggunakan aplikasi dompet digital apapun.</div>
+      <div class="qris-img-wrap">
+        <img
+          src="https://yaffblog.wordpress.com/wp-content/uploads/2026/04/img_3744.jpeg"
+          alt="Kode QRIS ShopNow"
+          onerror="this.parentNode.innerHTML='<div style=\'font-size:80px;padding:20px;\'>📷</div><p style=\'font-size:13px;color:var(--text-muted);\'>QR tidak tersedia</p>'"
+        >
+      </div>
+      <div class="qris-amount" id="qrisAmount">Rp0</div>
+      <div class="qris-note">
+        ✅ Diterima: GoPay, OVO, DANA, ShopeePay, LinkAja, BCA Mobile, dan semua bank.<br><br>
+        📌 Setelah pembayaran berhasil, klik tombol di bawah dan tim kami akan menghubungi Anda via WhatsApp.
+      </div>
+      <button class="btn-qris-done" onclick="confirmQRIS()">✅ Saya Sudah Bayar!</button>
     </div>
-    <div class="qris-amount" id="qrisAmount">Rp0</div>
-    <div class="qris-note">
-      ✅ Diterima: GoPay, OVO, DANA, ShopeePay, LinkAja, BCA Mobile, dan semua bank.<br><br>
-      📌 Setelah pembayaran berhasil, klik tombol di bawah dan tim kami akan menghubungi Anda via WhatsApp.
-    </div>
-    <button class="btn-qris-done" onclick="confirmQRIS()">✅ Saya Sudah Bayar!</button>
   </div>
-</div>
 
-<!-- SUCCESS MODAL -->
+  <!-- ══════════════════════════════════
+       SUCCESS MODAL
+       ══════════════════════════════════ -->
 
-<div class="modal" id="successModal">
-  <div class="modal-box" style="max-width:440px;padding:40px;text-align:center;">
-    <div style="font-size:72px;margin-bottom:16px;">🎉</div>
-    <div style="font-family:var(--font-display);font-size:24px;font-weight:800;margin-bottom:10px;">Pesanan Berhasil!</div>
-    <div style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:28px;" id="successMsg">Terima kasih atas kepercayaan Anda berbelanja di ShopNow!</div>
-    <button class="btn-pay" onclick="closeModal('successModal')">Lanjut Belanja 🛍️</button>
+  <div class="modal" id="successModal" role="dialog" aria-label="Pesanan Berhasil" aria-modal="true">
+    <div class="modal-box success-box">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">Pesanan Berhasil!</div>
+      <div
+        style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:28px;"
+        id="successMsg"
+        aria-live="polite"
+      >
+        Terima kasih atas kepercayaan Anda berbelanja di ShopNow!
+      </div>
+      <button class="btn-pay" onclick="closeModal('successModal')">Lanjut Belanja 🛍️</button>
+    </div>
   </div>
-</div>
 
-<!-- TOAST -->
+  <!-- ══════════════════════════════════
+       TOAST CONTAINER
+       ══════════════════════════════════ -->
 
-<div id="toast-wrap"></div>
+  <div id="toast-wrap" role="status" aria-live="polite" aria-atomic="false"></div>
 
-<script>
-// ═══════════════════════════════════════
-//  DATABASE PRODUK LENGKAP
-// ═══════════════════════════════════════
-const DB = [
-  // ELEKTRONIK
-  {id:10,emoji:'📱',name:'Apple iPhone 15 Pro Max 256GB',price:22999000,orig:24999000,cat:'Elektronik',badge:'new',rating:4.9,sold:1200,desc:'Smartphone flagship dengan rangka titanium aerospace-grade dan chip A17 Pro. Kamera 48MP dengan periskop optical zoom hingga 5x. Layar Super Retina XDR 6.7 inci.'},
-  {id:11,emoji:'💻',name:'MacBook Air M2 Chip 8GB/256GB',price:17599000,orig:19999000,cat:'Elektronik',badge:'hot',rating:4.9,sold:2100,desc:'Laptop tertipis Apple dengan chip M2. Baterai tahan 18 jam, layar Liquid Retina 13.6". Desain fanless — hening total.'},
-  {id:12,emoji:'🎧',name:'Sony WH-1000XM5 Noise Cancelling',price:4899000,orig:5999000,cat:'Elektronik',badge:'sale',rating:4.8,sold:3400,desc:'Headphone ANC terbaik di kelasnya. Noise cancelling industri terdepan, 30 jam baterai, audio LDAC lossless.'},
-  {id:26,emoji:'📺',name:'Samsung QLED Smart TV 55" 4K UHD',price:7500000,orig:8900000,cat:'Elektronik',badge:'sale',rating:4.8,sold:1800,desc:'TV 4K QLED dengan warna 100% Color Volume. Smart TV Tizen, suara Dolby Atmos, panel 120Hz.'},
-  {id:13,emoji:'⌚',name:'Garmin Forerunner 265 Smartwatch GPS',price:7999000,orig:8599000,cat:'Elektronik',badge:'new',rating:4.7,sold:890,desc:'Jam tangan lari premium. AMOLED touchscreen, GPS multi-band, health monitoring 24/7.'},
-  {id:14,emoji:'📸',name:'Sony Alpha A7 IV Mirrorless 33MP',price:32999000,orig:34999000,cat:'Elektronik',badge:'pro',rating:4.9,sold:420,desc:'Kamera hybrid terbaik. Sensor full-frame BSI 33MP, video 4K 60fps, Eye-AF generasi terbaru.'},
-  {id:15,emoji:'🎮',name:'PlayStation 5 Console Disc Edition',price:8499000,orig:9500000,cat:'Elektronik',badge:'hot',rating:4.9,sold:8900,desc:'Konsol game generasi terbaru. SSD NVMe ultra-cepat, DualSense haptic feedback, 4K 120fps gaming.'},
+  <!-- ══════════════════════════════════
+       JAVASCRIPT
+       ══════════════════════════════════ -->
 
-  // KECANTIKAN
-  {id:21,emoji:'🧴',name:'Skintific 5X Ceramide Barrier Moisture Gel',price:139000,orig:169000,cat:'Kecantikan',badge:'best',rating:4.9,sold:45200,desc:'Pelembap gel ringan dengan 5 jenis ceramide. Menenangkan kemerahan, memperkuat skin barrier, cocok semua jenis kulit.'},
-  {id:22,emoji:'💄',name:'Wardah Exclusive Matte Lip Cream',price:65000,orig:89000,cat:'Kecantikan',badge:'sale',rating:4.8,sold:89100,desc:'Lip cream pigmented, tahan hingga 8 jam. Formula moisturizing, tidak bikin bibir kering. 30+ pilihan warna.'},
-  {id:23,emoji:'✨',name:'Somethinc Niacinamide + Sabi Beet Serum',price:115000,orig:145000,cat:'Kecantikan',badge:'hot',rating:4.7,sold:32100,desc:'Serum andalan brightening. Niacinamide 10% + Tranexamic Acid mencerahkan noda hitam dan bekas jerawat.'},
-  {id:24,emoji:'🌞',name:'Azarine Hydrasoothe Sunscreen Gel SPF45',price:65000,orig:75000,cat:'Kecantikan',badge:'new',rating:4.9,sold:98000,desc:'Sunscreen ringan bentuk gel, menyerap sempurna tanpa whitecast. PA++++, cocok di bawah makeup.'},
-  {id:25,emoji:'🌿',name:'The Body Shop Tea Tree Oil 10ml',price:189000,orig:219000,cat:'Kecantikan',badge:'sale',rating:4.8,sold:12500,desc:'Minyak esensial murni 100%. Ampuh mengempeskan jerawat meradang dalam 6-8 jam pemakaian.'},
-  {id:30,emoji:'💋',name:'Dior Addict Lip Glow Color Reviver Balm',price:620000,orig:680000,cat:'Kecantikan',badge:'premium',rating:4.9,sold:3200,desc:'Lip balm mewah yang warnanya menyesuaikan pH bibir alami. Melembapkan 24 jam, aroma bunga mawar.'},
-
-  // FASHION
-  {id:16,emoji:'👟',name:"Nike Air Force 1 '07 Original White",price:1549000,orig:1799000,cat:'Fashion',badge:'hot',rating:4.8,sold:15000,desc:"Sneakers legendaris sepanjang masa. Upper kulit asli, sol Air-Sole empuk, warna pure white ikonik."},
-  {id:17,emoji:'👗',name:'ZARA Midi Dress Floral Summer Edition',price:599000,orig:899000,cat:'Fashion',badge:'sale',rating:4.7,sold:4300,desc:'Dress motif floral musim panas. Bahan rayon ringan, potongan A-line yang flattering, panjang midi.'},
-  {id:18,emoji:'👜',name:'Coach Tabby Shoulder Bag 26 Leather',price:4500000,orig:6500000,cat:'Fashion',badge:'premium',rating:4.9,sold:1200,desc:'Tas wanita ikonik Coach berbahan kulit glove-tanned asli. Tali adjustable, ruang simpan praktis.'},
-  {id:19,emoji:'👔',name:'Kemeja Flannel Premium Kotak Lengan Panjang',price:250000,orig:350000,cat:'Fashion',badge:'sale',rating:4.6,sold:12500,desc:'Kemeja flannel bahan cotton 100% tebal berkualitas. Hangat, nyaman, cocok untuk musim hujan.'},
-  {id:20,emoji:'🕶️',name:'Ray-Ban Aviator Classic Polarized Gold',price:2400000,orig:2800000,cat:'Fashion',badge:'hot',rating:4.8,sold:3100,desc:'Kacamata hitam ikonik aviator. Lensa polarized G-15 anti-silau, frame baja tahan karat, UV400.'},
-  {id:27,emoji:'👟',name:'Adidas Ultraboost 22 Running Shoes',price:2800000,orig:3300000,cat:'Fashion',badge:'pro',rating:4.9,sold:5200,desc:'Sepatu lari paling responsif. Teknologi Boost+ energy return, upper Primeknit breathable.'},
-
-  // HOBI & MUSIK
-  {id:1,emoji:'🎹',name:'Yamaha P-45 Digital Piano 88-Keys GHS',price:7500000,orig:8200000,cat:'Hobi & Musik',badge:'best',rating:4.9,sold:1450,desc:'Piano digital ideal untuk pemula-profesional. 88 tuts Graded Hammer Standard, 10 voices, 64-note polyphony. Suara Stereo AWM yang kaya.'},
-  {id:2,emoji:'🎸',name:'Yamaha F310 Acoustic Guitar Natural',price:1850000,orig:2100000,cat:'Hobi & Musik',badge:'hot',rating:4.8,sold:3200,desc:'Gitar akustik legendaris untuk pemula. Spruce top, nato back & sides, tone rich dan playability nyaman. Bundle pick & capo.'},
-  {id:3,emoji:'🎛️',name:'Korg nanoKEY2 MIDI Controller USB',price:790000,orig:950000,cat:'Hobi & Musik',badge:'sale',rating:4.7,sold:850,desc:'Keyboard MIDI 25 tuts super tipis dan portabel. USB bus-powered, velocity sensitive, cocok untuk produser mobile.'},
-  {id:4,emoji:'📕',name:'Buku Panduan Teori Musik & Chord Keyboard',price:85000,orig:120000,cat:'Hobi & Musik',badge:'new',rating:4.9,sold:4200,desc:'Buku wajib untuk pemula musik. Covers teori dasar, notasi balok, chord keyboard lengkap, dan latihan skala.'},
-  {id:28,emoji:'🧸',name:'Mainan Edukasi Balok Susun 100pcs Premium',price:120000,orig:180000,cat:'Hobi & Musik',badge:'kids',rating:4.7,sold:8400,desc:'Mainan edukatif anak usia 2-8 tahun. Melatih motorik halus, kreativitas, dan kemampuan spatial.'},
-
-  // HEWAN PELIHARAAN
-  {id:5,emoji:'🐟',name:'Royal Canin Indoor Adult Cat Food 2kg',price:125000,orig:150000,cat:'Hewan Peliharaan',badge:'promo',rating:4.9,sold:15800,desc:'Makanan kucing premium untuk kucing indoor. Formula khusus mengurangi bau kotoran, menjaga berat badan ideal dan bulu lebat.'},
-  {id:6,emoji:'🎒',name:'Tas Ransel Kucing Astronot Transparan',price:185000,orig:250000,cat:'Hewan Peliharaan',badge:'hot',rating:4.8,sold:7300,desc:'Carrier kucing unik berbentuk astronot. Kubah transparan 180°, ventilasi optimal, kapasitas kucing hingga 5kg.'},
-  {id:7,emoji:'🐈',name:'Cat Tree Tower Premium Bertingkat 150cm',price:450000,orig:600000,cat:'Hewan Peliharaan',badge:'best',rating:4.7,sold:2100,desc:'Pohon garukan kucing 5 level. Material sisal alami, platform bulu lembut, hammock, dan gantungan mainan.'},
-  {id:8,emoji:'💊',name:'Viterna Plus Vitamin & Suplemen Kucing',price:95000,orig:125000,cat:'Hewan Peliharaan',badge:'kesehatan',rating:4.9,sold:5400,desc:'Suplemen vitamin lengkap A, B, C, D, E untuk kucing. Meningkatkan imunitas, nafsu makan, dan kilap bulu.'},
-  {id:29,emoji:'🐾',name:'Pasir Kucing Bentonite Wangi Kopi 10L',price:45000,orig:60000,cat:'Hewan Peliharaan',badge:'hot',rating:4.8,sold:22000,desc:'Pasir bentonite gumpal kuat dengan wangi kopi. Efektif menetralisir bau, debu minimal, tahan lama 4 minggu.'},
-
-  // PROPERTI
-  {id:9,emoji:'🏡',name:'Tanah & Bangunan SHM 380m² (Padang)',price:1500000000,orig:1650000000,cat:'Properti',badge:'investasi',rating:5.0,sold:2,desc:'Investasi properti super strategis di Tunggul Hitam, Padang. Luas 380m², SHM. Terdiri dari: 1 rumah induk, 2 rumah kontrakan, kos 4 pintu. Passive income total ±Rp8jt/bulan. Lokasi strategis akses mudah.'},
-];
-
-// ═══════════════════════════════════════
-//  STATE MANAGEMENT
-// ═══════════════════════════════════════
-let cart = JSON.parse(localStorage.getItem('sn_cart')) || [];
-let wishlist = JSON.parse(localStorage.getItem('sn_wish')) || [];
-let currentUser = localStorage.getItem('sn_user') || null;
-let activeCat = 'Semua';
-let activeProducts = [...DB];
-let displayCount = 0;
-const PER_PAGE = 12;
-let selectedPay = 'whatsapp';
-let pendingOrderData = null;
-
-const WHATSAPP_NO = '6285129787175';
-
-// ═══════════════════════════════════════
-//  UTILITIES
-// ═══════════════════════════════════════
-const fmt = n => 'Rp' + n.toLocaleString('id-ID');
-const disc = (p,o) => Math.round((1-p/o)*100);
-const totalCart = () => cart.reduce((s,i) => s + i.price * i.qty, 0);
-const totalItems = () => cart.reduce((s,i) => s + i.qty, 0);
-
-function toast(msg, type='success', duration=3500) {
-  const icons = {success:'✅',error:'❌',info:'ℹ️',warn:'⚠️'};
-  const wrap = document.getElementById('toast-wrap');
-  const el = document.createElement('div');
-  el.className = `toast ${type}`;
-  el.innerHTML = `<span class="toast-icon">${icons[type]||'✅'}</span><span class="toast-msg">${msg}</span><button class="toast-close" onclick="this.parentElement.remove()">✕</button>`;
-  wrap.appendChild(el);
-  setTimeout(() => {
-    el.style.transition = '.3s';
-    el.style.opacity = '0';
-    el.style.transform = 'translateX(110%)';
-    setTimeout(() => el.remove(), 320);
-  }, duration);
-}
-
-// ═══════════════════════════════════════
-//  THEME
-// ═══════════════════════════════════════
-if (localStorage.getItem('sn_theme') === 'dark') {
-  document.body.classList.add('dark');
-  document.getElementById('themeIcon').textContent = '☀️';
-}
-function toggleTheme() {
-  document.body.classList.toggle('dark');
-  const dark = document.body.classList.contains('dark');
-  localStorage.setItem('sn_theme', dark ? 'dark' : 'light');
-  document.getElementById('themeIcon').textContent = dark ? '☀️' : '🌙';
-}
-
-// ═══════════════════════════════════════
-//  COUNTDOWN TIMER
-// ═══════════════════════════════════════
-function initCountdown() {
-  let key = 'sn_flash_end';
-  let end = parseInt(localStorage.getItem(key)) || 0;
-  if (!end || end < Date.now()) {
-    end = Date.now() + 6 * 3600 * 1000;
-    localStorage.setItem(key, end);
-  }
-  function tick() {
-    const diff = end - Date.now();
-    if (diff <= 0) { localStorage.removeItem(key); initCountdown(); return; }
-    const h = Math.floor(diff/3600000);
-    const m = Math.floor((diff%3600000)/60000);
-    const s = Math.floor((diff%60000)/1000);
-    document.getElementById('cdH').textContent = String(h).padStart(2,'0');
-    document.getElementById('cdM').textContent = String(m).padStart(2,'0');
-    document.getElementById('cdS').textContent = String(s).padStart(2,'0');
-  }
-  tick();
-  setInterval(tick, 1000);
-}
-initCountdown();
-
-// ═══════════════════════════════════════
-//  FILTER & SEARCH
-// ═══════════════════════════════════════
-function setCategory(cat, el) {
-  activeCat = cat;
-  document.querySelectorAll('.cat-link').forEach(e => e.classList.remove('active'));
-  if (el) el.classList.add('active');
-  document.getElementById('searchInput').value = '';
-  applyFilters();
-}
-
-function handleSearch(e) {
-  if (e.key === 'Enter') doSearch();
-}
-
-function doSearch() {
-  applyFilters();
-  document.querySelector('.content').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function applyFilters() {
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
-  const minP = parseInt(document.getElementById('minPrice').value) || 0;
-  const maxP = parseInt(document.getElementById('maxPrice').value) || Infinity;
-  const rating = parseFloat(document.querySelector('input[name="ratingFilter"]:checked').value);
-  const sort = document.getElementById('sortSelect').value;
-
-  let filtered = DB.filter(p => {
-    const matchCat = activeCat === 'Semua' || p.cat === activeCat;
-    const matchQ = !q || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
-    const matchPrice = p.price >= minP && p.price <= maxP;
-    const matchRating = p.rating >= rating;
-    return matchCat && matchQ && matchPrice && matchRating;
-  });
-
-  if (sort === 'termurah') filtered.sort((a,b) => a.price - b.price);
-  else if (sort === 'termahal') filtered.sort((a,b) => b.price - a.price);
-  else if (sort === 'terbaru') filtered.sort((a,b) => b.id - a.id);
-  else if (sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
-  else filtered.sort((a,b) => b.sold - a.sold);
-
-  activeProducts = filtered;
-  displayCount = 0;
-
-  let title = activeCat === 'Semua' ? '✨ Semua Produk' : `📦 ${activeCat}`;
-  if (q) title = `🔍 Hasil: "${q}"`;
-  document.getElementById('gridTitle').textContent = title;
-  document.getElementById('gridCount').textContent = `${filtered.length} produk ditemukan`;
-  document.getElementById('productGrid').innerHTML = '';
-
-  loadMore();
-}
-
-function loadMore() {
-  const grid = document.getElementById('productGrid');
-  const slice = activeProducts.slice(displayCount, displayCount + PER_PAGE);
-
-  if (activeProducts.length === 0) {
-    grid.innerHTML = `<div class="empty-state"><div class="es-icon">🔍</div><h3>Produk Tidak Ditemukan</h3><p>Coba kata kunci atau filter yang berbeda.</p></div>`;
-    document.getElementById('loadMoreWrap').style.display = 'none';
-    return;
-  }
-
-  slice.forEach(p => {
-    const isWish = wishlist.includes(p.id);
-    const d = disc(p.price, p.orig);
-    const div = document.createElement('div');
-    div.className = 'p-card';
-    div.innerHTML = `
-      <div class="p-card-img">
-        ${p.emoji}
-        <span class="p-badge ${p.badge}">${p.badge.toUpperCase()}</span>
-        <button class="p-wish ${isWish?'active':''}" onclick="event.stopPropagation();toggleWish(${p.id},this)">${isWish?'❤️':'🤍'}</button>
-      </div>
-      <div class="p-body">
-        <div class="p-cat">${p.cat}</div>
-        <div class="p-name">${p.name}</div>
-        <div class="p-price">${fmt(p.price)}</div>
-        <div class="p-orig">${fmt(p.orig)}</div>
-        <div class="p-disc">Hemat ${d}%</div>
-        <div class="p-stats"><span>⭐ ${p.rating}</span><span>Terjual ${p.sold >= 1000 ? (p.sold/1000).toFixed(1)+'rb' : p.sold}</span></div>
-        <button class="btn-add" onclick="event.stopPropagation();addToCart(${p.id})">+ Keranjang</button>
-      </div>
-    `;
-    div.addEventListener('click', () => openQV(p.id));
-    grid.appendChild(div);
-  });
-
-  displayCount += slice.length;
-  document.getElementById('loadMoreWrap').style.display = displayCount < activeProducts.length ? 'block' : 'none';
-}
-
-function resetPage() {
-  document.getElementById('searchInput').value = '';
-  document.getElementById('minPrice').value = '';
-  document.getElementById('maxPrice').value = '';
-  document.querySelector('input[name="ratingFilter"]').checked = true;
-  activeCat = 'Semua';
-  document.querySelectorAll('.cat-link').forEach((e,i) => { if(i===0) e.classList.add('active'); else e.classList.remove('active'); });
-  applyFilters();
-}
-
-function resetFilters() {
-  document.getElementById('minPrice').value = '';
-  document.getElementById('maxPrice').value = '';
-  document.querySelector('input[name="ratingFilter"]').checked = true;
-  document.getElementById('sortSelect').value = 'populer';
-  applyFilters();
-  toast('Filter direset!', 'info');
-}
-
-// ═══════════════════════════════════════
-//  PANELS / OVERLAY
-// ═══════════════════════════════════════
-function openOverlay() { document.getElementById('overlay').classList.add('active'); }
-function closeAll() {
-  document.getElementById('overlay').classList.remove('active');
-  document.getElementById('cartPanel').classList.remove('open');
-  document.getElementById('wishPanel').classList.remove('open');
-}
-
-function openCart() { renderCart(); openOverlay(); document.getElementById('cartPanel').classList.add('open'); }
-function openWishlist() { renderWishlist(); openOverlay(); document.getElementById('wishPanel').classList.add('open'); }
-
-// ═══════════════════════════════════════
-//  CART
-// ═══════════════════════════════════════
-function addToCart(id) {
-  const p = DB.find(x => x.id === id);
-  if (!p) return;
-  const exist = cart.find(x => x.id === id);
-  if (exist) exist.qty++;
-  else cart.push({...p, qty:1});
-  saveCart();
-  toast(`🛒 ${p.name.substring(0,30)}... ditambahkan!`);
-}
-
-function removeFromCart(id) {
-  cart = cart.filter(x => x.id !== id);
-  saveCart();
-  renderCart();
-}
-
-function changeQty(id, delta) {
-  const item = cart.find(x => x.id === id);
-  if (!item) return;
-  item.qty += delta;
-  if (item.qty < 1) { cart = cart.filter(x => x.id !== id); }
-  saveCart();
-  renderCart();
-}
-
-function saveCart() {
-  localStorage.setItem('sn_cart', JSON.stringify(cart));
-  document.getElementById('cartBadge').textContent = totalItems();
-}
-
-function renderCart() {
-  const body = document.getElementById('cartBody');
-  const foot = document.getElementById('cartFoot');
-  const total = totalCart();
-
-  if (cart.length === 0) {
-    body.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--text-muted)"><div style="font-size:64px;margin-bottom:16px;">🛍️</div><div style="font-size:16px;font-weight:800;color:var(--text);">Keranjang Kosong</div><div style="font-size:13px;margin-top:8px;">Yuk mulai belanja!</div></div>`;
-    foot.style.display = 'none';
-    return;
-  }
-
-  body.innerHTML = cart.map(i => `
-    <div class="cart-item">
-      <div class="ci-img">${i.emoji}</div>
-      <div class="ci-info">
-        <div class="ci-name">${i.name}</div>
-        <div class="ci-price">${fmt(i.price)} <span class="ci-qty">×${i.qty}</span></div>
-        <div class="qty-ctrl">
-          <button class="qty-btn" onclick="changeQty(${i.id},-1)">−</button>
-          <span class="qty-num">${i.qty}</span>
-          <button class="qty-btn" onclick="changeQty(${i.id},1)">+</button>
-        </div>
-      </div>
-      <button class="btn-rm" onclick="removeFromCart(${i.id})">🗑</button>
-    </div>
-  `).join('');
-
-  document.getElementById('cartTotalText').textContent = fmt(total);
-  foot.style.display = 'block';
-}
-
-// ═══════════════════════════════════════
-//  WISHLIST
-// ═══════════════════════════════════════
-function toggleWish(id, btn) {
-  if (!currentUser) { toast('Silakan masuk akun terlebih dahulu!', 'warn'); openModal('loginModal'); return; }
-  const idx = wishlist.indexOf(id);
-  if (idx > -1) {
-    wishlist.splice(idx, 1);
-    if (btn) { btn.textContent = '🤍'; btn.classList.remove('active'); }
-    toast('Dihapus dari wishlist', 'info');
-  } else {
-    wishlist.push(id);
-    if (btn) { btn.textContent = '❤️'; btn.classList.add('active'); }
-    toast('❤️ Disimpan ke wishlist!');
-  }
-  localStorage.setItem('sn_wish', JSON.stringify(wishlist));
-  document.getElementById('wishBadge').textContent = wishlist.length;
-}
-
-function renderWishlist() {
-  const body = document.getElementById('wishBody');
-  if (wishlist.length === 0) {
-    body.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--text-muted)"><div style="font-size:64px;margin-bottom:16px;">💔</div><div style="font-size:16px;font-weight:800;color:var(--text);">Wishlist Kosong</div><div style="font-size:13px;margin-top:8px;">Simpan produk favorit di sini!</div></div>`;
-    return;
-  }
-  body.innerHTML = wishlist.map(id => {
-    const p = DB.find(x => x.id === id);
-    if (!p) return '';
-    return `
-      <div class="cart-item">
-        <div class="wi-img">${p.emoji}</div>
-        <div class="ci-info">
-          <div class="ci-name">${p.name}</div>
-          <div class="ci-price">${fmt(p.price)}</div>
-          <button class="btn-add" style="margin-top:10px;padding:8px;" onclick="addToCart(${p.id})">🛒 Tambah Keranjang</button>
-        </div>
-        <button class="btn-rm" onclick="toggleWish(${p.id}); renderWishlist();">✕</button>
-      </div>
-    `;
-  }).join('');
-}
-
-// ═══════════════════════════════════════
-//  AUTH
-// ═══════════════════════════════════════
-function openAuth() {
-  closeAll();
-  if (currentUser) {
-    document.getElementById('profName').textContent = `Halo, ${currentUser}! 👋`;
-    document.getElementById('profCartCount').textContent = totalItems();
-    document.getElementById('profWishCount').textContent = wishlist.length;
-    openModal('profileModal');
-  } else {
-    openModal('loginModal');
-  }
-}
-
-function doLogin() {
-  const name = document.getElementById('loginName').value.trim();
-  const pass = document.getElementById('loginPass').value.trim();
-  if (!name) { toast('Nama pengguna tidak boleh kosong!', 'error'); return; }
-  if (!pass || pass.length < 3) { toast('Kata sandi minimal 3 karakter!', 'error'); return; }
-  currentUser = name;
-  localStorage.setItem('sn_user', name);
-  document.getElementById('userLabel').textContent = name.split(' ')[0];
-  document.getElementById('loginName').value = '';
-  document.getElementById('loginPass').value = '';
-  closeModal('loginModal');
-  toast(`🎉 Selamat datang, ${name}!`);
-}
-
-function doLogout() {
-  currentUser = null;
-  localStorage.removeItem('sn_user');
-  document.getElementById('userLabel').textContent = 'Masuk';
-  closeModal('profileModal');
-  toast('Anda telah keluar akun.', 'info');
-}
-
-// ═══════════════════════════════════════
-//  QUICK VIEW
-// ═══════════════════════════════════════
-function openQV(id) {
-  const p = DB.find(x => x.id === id);
-  if (!p) return;
-  const isWish = wishlist.includes(p.id);
-  const d = disc(p.price, p.orig);
-
-  const reviews = [
-    { user:'Ahmad F.', stars:'⭐⭐⭐⭐⭐', text:'Barang sampai aman & sesuai deskripsi. Kualitas sangat memuaskan, worth it banget! Packing rapi, pengiriman cepat.' },
-    { user:'Siti R.', stars:'⭐⭐⭐⭐⭐', text:'Sudah 3x beli di sini, selalu puas. Seller responsif, produk original 100%. Highly recommended!' },
-    { user:'Budi S.', stars:'⭐⭐⭐⭐', text:'Produk sesuai ekspektasi. Pengiriman 2 hari sampai. Akan repeat order lagi.' },
-  ];
-
-  document.getElementById('qvContent').innerHTML = `
-    <button class="modal-close" onclick="closeModal('qvModal')">✕</button>
-    <div class="qv-img-wrap">${p.emoji}</div>
-    <div style="display:flex;flex-direction:column;gap:0;overflow-y:auto;max-height:80vh;padding-right:4px;">
-      <div class="qv-cat">${p.cat}</div>
-      <div class="qv-name">${p.name}</div>
-      <div class="qv-pricing">
-        <span class="qv-price">${fmt(p.price)}</span>
-        <div style="display:flex;flex-direction:column;gap:2px;">
-          <span class="qv-orig">${fmt(p.orig)}</span>
-          <span class="qv-disc">Hemat ${d}%</span>
-        </div>
-      </div>
-      <div class="qv-meta">
-        <div>⭐ <strong>${p.rating}</strong> <span>Rating</span></div>
-        <div>📦 <strong>${p.sold >= 1000 ? (p.sold/1000).toFixed(1)+'rb' : p.sold}</strong> <span>Terjual</span></div>
-      </div>
-      <div class="qv-desc">${p.desc}</div>
-      <div class="reviews">
-        <div class="review-title">💬 Ulasan Pembeli</div>
-        ${reviews.map(r => `<div class="review-item"><div class="review-user">${r.user} <span style="color:#F59E0B">${r.stars}</span></div><div class="review-text">"${r.text}"</div></div>`).join('')}
-      </div>
-      <div class="qv-actions">
-        <button class="btn-qv-cart" onclick="addToCart(${p.id}); closeModal('qvModal')">🛒 Tambah ke Keranjang</button>
-        <button class="btn-qv-wish ${isWish?'active':''}" onclick="toggleWish(${p.id}, this)">${isWish?'❤️':'🤍'}</button>
-      </div>
-    </div>
-  `;
-  openModal('qvModal');
-}
-
-// ═══════════════════════════════════════
-//  CHECKOUT
-// ═══════════════════════════════════════
-function openCheckout() {
-  if (cart.length === 0) { toast('Keranjang masih kosong!', 'error'); return; }
-  if (!currentUser) { toast('Harap masuk akun terlebih dahulu!', 'warn'); openAuth(); return; }
-  closeAll();
-
-  document.getElementById('ckName').value = currentUser;
-  document.getElementById('ckPhone').value = '';
-  document.getElementById('ckAddress').value = '';
-  document.getElementById('ckNote').value = '';
-  renderCheckoutSummary();
-  openModal('checkoutModal');
-}
-
-function renderCheckoutSummary() {
-  const subtotal = totalCart();
-  const fee = 2500;
-  const total = subtotal + fee;
-
-  document.getElementById('ckItems').innerHTML = cart.map(i =>
-    `<div class="sum-item"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60%;display:block;">${i.qty}× ${i.name}</span><span style="flex-shrink:0;font-weight:700;">${fmt(i.price*i.qty)}</span></div>`
-  ).join('');
-
-  document.getElementById('ckSubtotal').textContent = fmt(subtotal);
-  document.getElementById('ckTotal').textContent = fmt(total);
-}
-
-function selectPay(method, el) {
-  selectedPay = method;
-  document.querySelectorAll('.pay-opt').forEach(e => e.classList.remove('selected'));
-  el.classList.add('selected');
-}
-
-function processPayment() {
-  const name = document.getElementById('ckName').value.trim();
-  const phone = document.getElementById('ckPhone').value.trim();
-  const address = document.getElementById('ckAddress').value.trim();
-  const note = document.getElementById('ckNote').value.trim();
-
-  if (!name) { toast('Nama penerima harus diisi!', 'error'); return; }
-  if (!phone) { toast('Nomor HP/WhatsApp harus diisi!', 'error'); return; }
-  if (!address) { toast('Alamat pengiriman harus diisi!', 'error'); return; }
-
-  const subtotal = totalCart();
-  const total = subtotal + 2500;
-
-  pendingOrderData = { name, phone, address, note, total };
-
-  if (selectedPay === 'whatsapp') {
-    doWhatsAppPayment(name, phone, address, note, total);
-  } else if (selectedPay === 'qris') {
-    closeModal('checkoutModal');
-    document.getElementById('qrisAmount').textContent = fmt(total);
-    openModal('qrisModal');
-  } else {
-    // COD
-    doCODPayment(name, phone, address, note, total);
-  }
-}
-
-function buildWAMessage(name, phone, address, note, total) {
-  const lines = ['*🛒 PESANAN BARU — ShopNow*', '─────────────────────', ''];
-  cart.forEach((i, idx) => {
-    lines.push(`*${idx+1}. ${i.name}*`);
-    lines.push(`   Qty: ${i.qty} × ${fmt(i.price)} = ${fmt(i.price*i.qty)}`);
-    lines.push('');
-  });
-  lines.push('─────────────────────');
-  lines.push(`*Subtotal:* ${fmt(totalCart())}`);
-  lines.push(`*Biaya Layanan:* ${fmt(2500)}`);
-  lines.push(`*Total Bayar:* ${fmt(total)}`);
-  lines.push('');
-  lines.push('─────────────────────');
-  lines.push('*📦 DATA PENGIRIMAN*');
-  lines.push(`Nama: ${name}`);
-  lines.push(`HP/WA: ${phone}`);
-  lines.push(`Alamat: ${address}`);
-  if (note) lines.push(`Catatan: ${note}`);
-  lines.push('');
-  lines.push(`*💳 Metode Bayar:* Transfer Bank / E-Wallet`);
-  lines.push('─────────────────────');
-  lines.push('Mohon konfirmasi pesanan ini. Terima kasih! 🙏');
-  return lines.join('\n');
-}
-
-function doWhatsAppPayment(name, phone, address, note, total) {
-  const msg = buildWAMessage(name, phone, address, note, total);
-  const url = `https://wa.me/${WHATSAPP_NO}?text=${encodeURIComponent(msg)}`;
-
-  closeModal('checkoutModal');
-  clearCart();
-
-  document.getElementById('successMsg').innerHTML = `
-    <strong>${name}</strong>, pesanan Anda akan segera dikonfirmasi.<br>
-    WhatsApp terbuka otomatis untuk mengirim detail pesanan ke admin kami.<br><br>
-    Jika tidak terbuka, <a href="${url}" target="_blank" style="color:var(--primary);font-weight:800;">klik di sini</a>.
-  `;
-  openModal('successModal');
-
-  setTimeout(() => { window.open(url, '_blank'); }, 800);
-  toast('🎉 Pesanan dikirim ke WhatsApp Admin!', 'success', 5000);
-}
-
-function doCODPayment(name, phone, address, note, total) {
-  // Also send WA for COD confirmation
-  const lines = [
-    '*📦 PESANAN COD — ShopNow*',
-    '─────────────────────',
-    '',
-  ];
-  cart.forEach((i, idx) => {
-    lines.push(`*${idx+1}. ${i.name}*`);
-    lines.push(`   Qty: ${i.qty} × ${fmt(i.price)} = ${fmt(i.price*i.qty)}`);
-    lines.push('');
-  });
-  lines.push('─────────────────────');
-  lines.push(`*Total COD:* ${fmt(total)}`);
-  lines.push('');
-  lines.push('*📦 DATA PENGIRIMAN*');
-  lines.push(`Nama: ${name}`);
-  lines.push(`HP/WA: ${phone}`);
-  lines.push(`Alamat: ${address}`);
-  if (note) lines.push(`Catatan: ${note}`);
-  lines.push('');
-  lines.push('*💳 Metode:* Bayar di Tempat (COD)');
-  lines.push('─────────────────────');
-  lines.push('Mohon konfirmasi & segera diproses. Terima kasih! 🙏');
-
-  const msg = lines.join('\n');
-  const url = `https://wa.me/${WHATSAPP_NO}?text=${encodeURIComponent(msg)}`;
-
-  closeModal('checkoutModal');
-  clearCart();
-
-  document.getElementById('successMsg').innerHTML = `
-    <strong>${name}</strong>, pesanan COD Anda berhasil dibuat!<br>
-    Detail pesanan dikirim ke WhatsApp admin untuk segera diproses.<br><br>
-    Bayar saat barang tiba di tangan Anda 🚚
-  `;
-  openModal('successModal');
-  setTimeout(() => { window.open(url, '_blank'); }, 800);
-  toast('🚚 Pesanan COD berhasil dibuat!', 'success', 5000);
-}
-
-function confirmQRIS() {
-  if (!pendingOrderData) return;
-  const { name, phone, address, note, total } = pendingOrderData;
-
-  const lines = [
-    '*💳 PEMBAYARAN QRIS — ShopNow*',
-    '─────────────────────',
-    '',
-  ];
-  cart.forEach((i, idx) => {
-    lines.push(`*${idx+1}. ${i.name}*`);
-    lines.push(`   Qty: ${i.qty} × ${fmt(i.price)} = ${fmt(i.price*i.qty)}`);
-    lines.push('');
-  });
-  lines.push('─────────────────────');
-  lines.push(`*Total Bayar QRIS:* ${fmt(total)}`);
-  lines.push('');
-  lines.push('*📦 DATA PENGIRIMAN*');
-  lines.push(`Nama: ${name}`);
-  lines.push(`HP/WA: ${phone}`);
-  lines.push(`Alamat: ${address}`);
-  if (note) lines.push(`Catatan: ${note}`);
-  lines.push('');
-  lines.push('*💳 Metode:* QRIS (Sudah Bayar)');
-  lines.push('─────────────────────');
-  lines.push('Harap konfirmasi bukti pembayaran QRIS. Terima kasih! 🙏');
-
-  const msg = lines.join('\n');
-  const url = `https://wa.me/${WHATSAPP_NO}?text=${encodeURIComponent(msg)}`;
-
-  closeModal('qrisModal');
-  clearCart();
-
-  document.getElementById('successMsg').innerHTML = `
-    <strong>${name}</strong>, terima kasih telah membayar via QRIS!<br>
-    WhatsApp terbuka untuk mengirim bukti pembayaran ke admin kami.<br><br>
-    Pesanan akan segera diproses setelah konfirmasi. 📦
-  `;
-  openModal('successModal');
-  setTimeout(() => { window.open(url, '_blank'); }, 800);
-  toast('✅ Pembayaran QRIS dikonfirmasi!', 'success', 5000);
-}
-
-function clearCart() {
-  cart = [];
-  localStorage.setItem('sn_cart', JSON.stringify(cart));
-  document.getElementById('cartBadge').textContent = '0';
-}
-
-// ═══════════════════════════════════════
-//  MODAL HELPERS
-// ═══════════════════════════════════════
-function openModal(id) {
-  document.getElementById(id).classList.add('active');
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('active');
-}
-
-// Close modal on backdrop click
-document.querySelectorAll('.modal').forEach(m => {
-  m.addEventListener('click', e => {
-    if (e.target === m) closeModal(m.id);
-  });
-});
-
-// ═══════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════
-function init() {
-  if (currentUser) document.getElementById('userLabel').textContent = currentUser.split(' ')[0];
-  document.getElementById('cartBadge').textContent = totalItems();
-  document.getElementById('wishBadge').textContent = wishlist.length;
-  applyFilters();
-}
-
-init();
-</script>
+  <script src="app.js"></script>
 
 </body>
 </html>
