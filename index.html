@@ -1,503 +1,283 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ShopNow — E-Commerce Premium. Belanja produk pilihan dengan harga terbaik. Elektronik, Kecantikan, Fashion, dan lebih banyak lagi.">
-  <meta name="theme-color" content="#EE4D2D">
+  <meta name="referrer" content="no-referrer">
   <title>ShopNow — E-Commerce Premium</title>
-
-  <!-- Google Fonts -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ══════════════════════════════════
-       PROMO STRIP
-       ══════════════════════════════════ -->
+<div class="promo-strip">⚡ FLASH SALE — Diskon hingga 70%! Gratis Ongkir min. belanja Rp50.000 &nbsp;|&nbsp; Kode: SHOPNOW10</div>
 
-  <div class="promo-strip">
-    ⚡ FLASH SALE — Diskon hingga 70%! Gratis Ongkir min. belanja Rp50.000 &nbsp;|&nbsp; Kode: <strong>SHOPNOW10</strong>
-  </div>
-
-  <!-- ══════════════════════════════════
-       NAVBAR
-       ══════════════════════════════════ -->
-
-  <nav class="navbar" role="navigation" aria-label="Navigasi Utama">
-    <div class="nav-inner">
-
-```
-  <!-- Logo -->
-  <a class="logo" onclick="resetPage()" href="#" title="ShopNow — Halaman Utama">
-    Shop<span>Now</span>
-  </a>
-
-  <!-- Search Bar -->
-  <div class="search-wrap" role="search">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Cari produk, kategori..."
-      autocomplete="off"
-      aria-label="Cari produk"
-      onkeyup="handleSearch(event)"
-    >
-    <button class="search-btn" onclick="doSearch()" aria-label="Cari">
-      🔍 Cari
-    </button>
-  </div>
-
-  <!-- Nav Actions -->
-  <div class="nav-actions">
-
-    <!-- Theme Toggle -->
-    <button class="nav-btn" onclick="toggleTheme()" title="Ganti Tema" aria-label="Ganti Tema">
-      <span class="nb-icon" id="themeIcon">🌙</span>
-      <span class="nb-label">Tema</span>
-    </button>
-
-    <!-- Wishlist -->
-    <button class="nav-btn" onclick="openWishlist()" title="Wishlist" aria-label="Buka Wishlist">
-      <span class="nb-icon">❤️</span>
-      <span class="nb-label">Wishlist</span>
-      <span class="nav-badge" id="wishBadge" aria-label="Jumlah wishlist">0</span>
-    </button>
-
-    <!-- Cart -->
-    <button class="nav-btn" onclick="openCart()" title="Keranjang" aria-label="Buka Keranjang">
-      <span class="nb-icon">🛒</span>
-      <span class="nb-label">Keranjang</span>
-      <span class="nav-badge" id="cartBadge" aria-label="Jumlah keranjang">0</span>
-    </button>
-
-    <!-- Account -->
-    <button class="nav-btn" onclick="openAuth()" title="Akun Saya" aria-label="Akun Saya">
-      <span class="nb-icon">👤</span>
-      <span class="nb-label" id="userLabel">Masuk</span>
-    </button>
-
-  </div><!-- /.nav-actions -->
-</div><!-- /.nav-inner -->
-```
-
-  </nav>
-
-  <!-- ══════════════════════════════════
-       CATEGORY BAR
-       ══════════════════════════════════ -->
-
-  <div class="cat-bar" role="navigation" aria-label="Kategori Produk">
-    <div class="cat-inner" id="catBar">
-      <span class="cat-link active"  onclick="setCategory('Semua', this)">🏠 Semua</span>
-      <span class="cat-link"         onclick="setCategory('Elektronik', this)">📱 Elektronik</span>
-      <span class="cat-link"         onclick="setCategory('Kecantikan', this)">💄 Kecantikan</span>
-      <span class="cat-link"         onclick="setCategory('Fashion', this)">👗 Fashion</span>
-      <span class="cat-link"         onclick="setCategory('Hobi & Musik', this)">🎹 Hobi & Musik</span>
-      <span class="cat-link"         onclick="setCategory('Hewan Peliharaan', this)">🐾 Hewan Peliharaan</span>
-      <span class="cat-link"         onclick="setCategory('Properti', this)">🏡 Properti</span>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="logo" onclick="resetPage()">Shop<span>Now</span></a>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Cari produk..." autocomplete="off" onkeyup="handleSearch(event)">
+      <button class="search-btn" onclick="doSearch()">🔍 Cari</button>
     </div>
-  </div>
-
-  <!-- ══════════════════════════════════
-       MAIN CONTENT AREA
-       ══════════════════════════════════ -->
-
-  <div class="main">
-
-```
-<!-- ── SIDEBAR / FILTERS ── -->
-<aside class="sidebar" aria-label="Filter Produk">
-
-  <!-- Sort -->
-  <div class="filter-card">
-    <div class="filter-title">Urutkan</div>
-    <select id="sortSelect" class="filter-select" onchange="applyFilters()" aria-label="Urutkan produk">
-      <option value="populer">🔥 Terpopuler</option>
-      <option value="termurah">💰 Termurah</option>
-      <option value="termahal">💎 Termahal</option>
-      <option value="terbaru">🆕 Terbaru</option>
-      <option value="rating">⭐ Rating Tertinggi</option>
-    </select>
-  </div>
-
-  <!-- Price Filter -->
-  <div class="filter-card">
-    <div class="filter-title">Filter Harga</div>
-    <input
-      type="number"
-      id="minPrice"
-      class="filter-input"
-      placeholder="Min (Rp)"
-      min="0"
-      oninput="applyFilters()"
-      aria-label="Harga minimum"
-    >
-    <input
-      type="number"
-      id="maxPrice"
-      class="filter-input"
-      placeholder="Max (Rp)"
-      min="0"
-      oninput="applyFilters()"
-      aria-label="Harga maksimum"
-    >
-  </div>
-
-  <!-- Rating Filter -->
-  <div class="filter-card">
-    <div class="filter-title">Rating Minimal</div>
-    <div class="rating-group" role="radiogroup" aria-label="Filter rating">
-      <label class="rating-option">
-        <input type="radio" name="ratingFilter" value="0"   checked onchange="applyFilters()"> Semua Rating
-      </label>
-      <label class="rating-option">
-        <input type="radio" name="ratingFilter" value="4"         onchange="applyFilters()"> ⭐ 4.0+
-      </label>
-      <label class="rating-option">
-        <input type="radio" name="ratingFilter" value="4.5"       onchange="applyFilters()"> ⭐ 4.5+
-      </label>
-      <label class="rating-option">
-        <input type="radio" name="ratingFilter" value="4.8"       onchange="applyFilters()"> ⭐ 4.8+
-      </label>
-    </div>
-  </div>
-
-  <!-- Reset -->
-  <div class="filter-card">
-    <button class="btn-filter" onclick="resetFilters()">🔄 Reset Filter</button>
-  </div>
-
-</aside>
-
-<!-- ── MAIN CONTENT ── -->
-<main class="content" role="main">
-
-  <!-- Flash Sale Banner -->
-  <div class="flash-banner" aria-label="Flash Sale">
-    <div class="fb-left">
-      <div class="fb-badge">⚡ FLASH SALE HARI INI</div>
-      <div class="fb-title">Belanja Makin Hemat,<br>Diskon Gila-gilaan!</div>
-      <div class="fb-sub">Ribuan produk pilihan dengan harga terbaik.</div>
-      <button class="btn-flash" onclick="setCategory('Elektronik', document.querySelectorAll('.cat-link')[1])">
-        Belanja Sekarang →
+    <div class="nav-actions">
+      <button class="nav-btn" onclick="toggleTheme()" title="Ganti Tema">
+        <span class="nb-icon" id="themeIcon">🌙</span>
+        <span class="nb-label">Tema</span>
+      </button>
+      <button class="nav-btn" onclick="openWishlist()" title="Wishlist">
+        <span class="nb-icon">❤️</span>
+        <span class="nb-label">Wishlist</span>
+        <span class="nav-badge" id="wishBadge">0</span>
+      </button>
+      <button class="nav-btn" onclick="openCart()" title="Keranjang">
+        <span class="nb-icon">🛒</span>
+        <span class="nb-label">Keranjang</span>
+        <span class="nav-badge" id="cartBadge">0</span>
+      </button>
+      <button class="nav-btn" onclick="openAuth()" title="Akun">
+        <span class="nb-icon">👤</span>
+        <span class="nb-label" id="userLabel">Masuk</span>
       </button>
     </div>
-    <div class="fb-right">
-      <div style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:700;margin-bottom:10px;">BERAKHIR DALAM</div>
-      <div class="countdown" aria-live="polite" aria-label="Hitung mundur flash sale">
-        <div class="cd-block">
-          <div class="cd-num" id="cdH">00</div>
-          <div class="cd-label">Jam</div>
-        </div>
-        <div class="cd-sep" aria-hidden="true">:</div>
-        <div class="cd-block">
-          <div class="cd-num" id="cdM">00</div>
-          <div class="cd-label">Menit</div>
-        </div>
-        <div class="cd-sep" aria-hidden="true">:</div>
-        <div class="cd-block">
-          <div class="cd-num" id="cdS">00</div>
-          <div class="cd-label">Detik</div>
-        </div>
-      </div>
-    </div>
   </div>
+</nav>
 
-  <!-- Product Grid Header -->
-  <div class="grid-header">
-    <div class="grid-title" id="gridTitle">✨ Semua Produk</div>
-    <div class="grid-count" id="gridCount" aria-live="polite"></div>
+<div class="cat-bar">
+  <div class="cat-inner" id="catBar">
+    <span class="cat-link active" onclick="setCategory('Semua',this)">🏠 Semua</span>
+    <span class="cat-link" onclick="setCategory('Elektronik',this)">📱 Elektronik</span>
+    <span class="cat-link" onclick="setCategory('Kecantikan',this)">💄 Kecantikan</span>
+    <span class="cat-link" onclick="setCategory('Fashion',this)">👗 Fashion</span>
+    <span class="cat-link" onclick="setCategory('Hobi & Musik',this)">🎹 Hobi & Musik</span>
+    <span class="cat-link" onclick="setCategory('Hewan Peliharaan',this)">🐾 Hewan Peliharaan</span>
+    <span class="cat-link" onclick="setCategory('Properti',this)">🏡 Properti</span>
   </div>
-
-  <!-- Product Grid -->
-  <div class="product-grid" id="productGrid" role="list" aria-label="Daftar Produk"></div>
-
-  <!-- Load More -->
-  <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
-    <button class="btn-load" onclick="loadMore()">Tampilkan Lebih Banyak ↓</button>
-  </div>
-
-</main>
-```
-
-  </div><!-- /.main -->
-
-  <!-- ══════════════════════════════════
-       OVERLAY (closes panels)
-       ══════════════════════════════════ -->
-
-  <div class="overlay" id="overlay" onclick="closeAll()" aria-hidden="true"></div>
-
-  <!-- ══════════════════════════════════
-       CART PANEL
-       ══════════════════════════════════ -->
-
-  <div class="panel" id="cartPanel" role="dialog" aria-label="Keranjang Belanja" aria-modal="true">
-    <div class="panel-head">
-      <div class="panel-head-title">🛒 Keranjang Belanja</div>
-      <button class="btn-x" onclick="closeAll()" aria-label="Tutup keranjang">✕</button>
-    </div>
-    <div class="panel-body" id="cartBody"></div>
-    <div class="panel-foot" id="cartFoot" style="display:none;">
-      <div class="cart-total-row">
-        <span>Total Belanja</span>
-        <span id="cartTotalText" style="color:var(--primary);">Rp0</span>
-      </div>
-      <button class="btn-checkout" onclick="openCheckout()">Lanjut ke Pembayaran 💳</button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════
-       WISHLIST PANEL
-       ══════════════════════════════════ -->
-
-  <div class="panel" id="wishPanel" role="dialog" aria-label="Wishlist" aria-modal="true">
-    <div class="panel-head">
-      <div class="panel-head-title">❤️ Wishlist Saya</div>
-      <button class="btn-x" onclick="closeAll()" aria-label="Tutup wishlist">✕</button>
-    </div>
-    <div class="panel-body" id="wishBody"></div>
-  </div>
-
-  <!-- ══════════════════════════════════
-       LOGIN MODAL
-       ══════════════════════════════════ -->
-
-  <div class="modal" id="loginModal" role="dialog" aria-label="Masuk ke Akun" aria-modal="true">
-    <div class="modal-box auth-box">
-      <button class="modal-close" onclick="closeModal('loginModal')" aria-label="Tutup">✕</button>
-      <div class="auth-icon">👋</div>
-      <div class="auth-title">Masuk ke Akun</div>
-      <div class="auth-sub">Belanja jadi lebih mudah &amp; aman!</div>
-      <div class="form-group">
-        <label class="form-label" for="loginName">Nama / Username</label>
-        <input
-          type="text"
-          class="form-field"
-          id="loginName"
-          placeholder="Contoh: Budi Santoso"
-          autocomplete="name"
-          onkeyup="if(event.key==='Enter') doLogin()"
-        >
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="loginPass">Kata Sandi</label>
-        <input
-          type="password"
-          class="form-field"
-          id="loginPass"
-          placeholder="Minimal 3 karakter"
-          autocomplete="current-password"
-          onkeyup="if(event.key==='Enter') doLogin()"
-        >
-      </div>
-      <button class="btn-checkout" style="margin-top:8px;" onclick="doLogin()">Masuk Sekarang 🚀</button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════
-       PROFILE MODAL
-       ══════════════════════════════════ -->
-
-  <div class="modal" id="profileModal" role="dialog" aria-label="Profil Akun" aria-modal="true">
-    <div class="modal-box prof-box">
-      <button class="modal-close" onclick="closeModal('profileModal')" aria-label="Tutup">✕</button>
-      <div class="prof-avatar">👤</div>
-      <div class="prof-name" id="profName">Halo!</div>
-      <div class="prof-sub">Selamat datang kembali di ShopNow.</div>
-      <div class="account-summary">
-        <div class="account-summary-title">Ringkasan Akun</div>
-        <div class="account-summary-row">
-          <span>Item di keranjang</span>
-          <span id="profCartCount" style="color:var(--primary);">0</span>
-        </div>
-        <div class="account-summary-row">
-          <span>Item di wishlist</span>
-          <span id="profWishCount" style="color:var(--danger);">0</span>
-        </div>
-      </div>
-      <button class="btn-logout" onclick="doLogout()">Keluar Akun 🚪</button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════
-       QUICK VIEW MODAL
-       ══════════════════════════════════ -->
-
-  <div class="modal" id="qvModal" role="dialog" aria-label="Detail Produk" aria-modal="true">
-    <div class="modal-box qv-box" id="qvContent">
-      <button class="modal-close" onclick="closeModal('qvModal')" aria-label="Tutup">✕</button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════
-       CHECKOUT MODAL
-       ══════════════════════════════════ -->
-
-  <div class="modal" id="checkoutModal" role="dialog" aria-label="Kasir Digital" aria-modal="true">
-    <div class="modal-box ck-box">
-      <button class="modal-close" onclick="closeModal('checkoutModal')" aria-label="Tutup">✕</button>
-
-```
-  <div class="ck-title">💳 Kasir Digital</div>
-  <div class="ck-sub">Lengkapi data pengiriman &amp; pilih metode pembayaran.</div>
-
-  <div class="ck-grid">
-
-    <!-- Left: Delivery + Payment -->
-    <div>
-      <div class="section-label">Data Pengiriman</div>
-
-      <div class="form-group">
-        <label class="form-label" for="ckName">Nama Penerima</label>
-        <input type="text" class="form-field" id="ckName" placeholder="Nama lengkap penerima" autocomplete="name">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="ckPhone">Nomor HP / WhatsApp</label>
-        <input type="tel" class="form-field" id="ckPhone" placeholder="Contoh: 08123456789" autocomplete="tel">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="ckAddress">Alamat Lengkap</label>
-        <textarea class="form-field" id="ckAddress" rows="3" placeholder="Jalan, RT/RW, Kelurahan, Kota, Kode Pos"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="ckNote">Catatan Pesanan (Opsional)</label>
-        <input type="text" class="form-field" id="ckNote" placeholder="Misal: Warna biru, ukuran M...">
-      </div>
-
-      <div class="section-label" style="margin-top:20px;">Metode Pembayaran</div>
-
-      <div class="pay-methods" role="radiogroup" aria-label="Pilih metode pembayaran">
-
-        <label class="pay-opt selected" id="payOptWA" onclick="selectPay('whatsapp', this)">
-          <input type="radio" name="payMethod" value="whatsapp" checked>
-          <span class="pay-icon">📱</span>
-          <div>
-            <div class="pay-name">Transfer Bank / E-Wallet</div>
-            <div class="pay-desc">Konfirmasi via WhatsApp otomatis</div>
-          </div>
-        </label>
-
-        <label class="pay-opt" id="payOptQR" onclick="selectPay('qris', this)">
-          <input type="radio" name="payMethod" value="qris">
-          <span class="pay-icon">📷</span>
-          <div>
-            <div class="pay-name">QRIS — Scan &amp; Pay</div>
-            <div class="pay-desc">Semua dompet digital diterima</div>
-          </div>
-        </label>
-
-        <label class="pay-opt" id="payOptCOD" onclick="selectPay('cod', this)">
-          <input type="radio" name="payMethod" value="cod">
-          <span class="pay-icon">🚚</span>
-          <div>
-            <div class="pay-name">COD (Bayar di Tempat)</div>
-            <div class="pay-desc">Bayar saat barang tiba</div>
-          </div>
-        </label>
-
-      </div><!-- /.pay-methods -->
-    </div>
-
-    <!-- Right: Order Summary -->
-    <div>
-      <div class="section-label">Ringkasan Pesanan</div>
-      <div class="ck-summary">
-        <div class="sum-title">🛍️ Detail Pesanan</div>
-        <div id="ckItems"></div>
-        <div class="sum-item">
-          <span>Subtotal</span>
-          <span id="ckSubtotal">Rp0</span>
-        </div>
-        <div class="sum-item">
-          <span>Ongkir (estimasi)</span>
-          <span style="color:var(--success);font-weight:700;">GRATIS</span>
-        </div>
-        <div class="sum-item">
-          <span>Biaya Layanan</span>
-          <span>Rp2.500</span>
-        </div>
-        <div class="sum-item total">
-          <span>Total Bayar</span>
-          <span class="sum-val" id="ckTotal">Rp0</span>
-        </div>
-      </div>
-      <button class="btn-pay" onclick="processPayment()">Bayar Sekarang 🎉</button>
-    </div>
-
-  </div><!-- /.ck-grid -->
 </div>
-```
 
+<div class="main">
+  <aside class="sidebar">
+    <div class="filter-card">
+      <div class="filter-title">Urutkan</div>
+      <select id="sortSelect" class="filter-select" onchange="applyFilters()">
+        <option value="populer">🔥 Terpopuler</option>
+        <option value="termurah">💰 Termurah</option>
+        <option value="termahal">💎 Termahal</option>
+        <option value="terbaru">🆕 Terbaru</option>
+        <option value="rating">⭐ Rating Tertinggi</option>
+      </select>
+    </div>
+    <div class="filter-card">
+      <div class="filter-title">Filter Harga</div>
+      <input type="number" id="minPrice" class="filter-input" placeholder="Min (Rp)" oninput="applyFilters()">
+      <input type="number" id="maxPrice" class="filter-input" placeholder="Max (Rp)" oninput="applyFilters()">
+    </div>
+    <div class="filter-card">
+      <div class="filter-title">Rating Minimal</div>
+      <div class="rating-group">
+        <label class="rating-option"><input type="radio" name="ratingFilter" value="0" checked onchange="applyFilters()"> Semua Rating</label>
+        <label class="rating-option"><input type="radio" name="ratingFilter" value="4" onchange="applyFilters()"> ⭐ 4.0+</label>
+        <label class="rating-option"><input type="radio" name="ratingFilter" value="4.5" onchange="applyFilters()"> ⭐ 4.5+</label>
+        <label class="rating-option"><input type="radio" name="ratingFilter" value="4.8" onchange="applyFilters()"> ⭐ 4.8+</label>
+      </div>
+    </div>
+    <div class="filter-card">
+      <button class="btn-filter" onclick="resetFilters()">🔄 Reset Filter</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="flash-banner">
+      <div class="fb-left">
+        <div class="fb-badge">⚡ FLASH SALE HARI INI</div>
+        <div class="fb-title">Belanja Makin Hemat,<br>Diskon Gila-gilaan!</div>
+        <div class="fb-sub">Ribuan produk pilihan dengan harga terbaik.</div>
+        <button class="btn-flash" onclick="setCategory('Elektronik', document.querySelectorAll('.cat-link')[1])">Belanja Sekarang →</button>
+      </div>
+      <div class="fb-right">
+        <div style="color:rgba(255,255,255,.7);font-size:12px;font-weight:700;margin-bottom:10px;text-align:center;">BERAKHIR DALAM</div>
+        <div class="countdown">
+          <div class="cd-block"><div class="cd-num" id="cdH">00</div><div class="cd-label">Jam</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-block"><div class="cd-num" id="cdM">00</div><div class="cd-label">Menit</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-block"><div class="cd-num" id="cdS">00</div><div class="cd-label">Detik</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-header">
+      <div class="grid-title" id="gridTitle">✨ Semua Produk</div>
+      <div class="grid-count" id="gridCount"></div>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+      <button class="btn-load" onclick="loadMore()">Tampilkan Lebih Banyak ↓</button>
+    </div>
+  </main>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<div class="panel" id="cartPanel">
+  <div class="panel-head">
+    <div class="panel-head-title">🛒 Keranjang Belanja</div>
+    <button class="btn-x" onclick="closeAll()">✕</button>
   </div>
+  <div class="panel-body" id="cartBody"></div>
+  <div class="panel-foot" id="cartFoot" style="display:none;">
+    <div class="cart-total-row"><span>Total Belanja</span><span id="cartTotalText" style="color:var(--primary);">Rp0</span></div>
+    <button class="btn-checkout" onclick="openCheckout()">Lanjut ke Pembayaran 💳</button>
+  </div>
+</div>
 
-  <!-- ══════════════════════════════════
-       QRIS MODAL
-       ══════════════════════════════════ -->
+<div class="panel" id="wishPanel">
+  <div class="panel-head">
+    <div class="panel-head-title">❤️ Wishlist Saya</div>
+    <button class="btn-x" onclick="closeAll()">✕</button>
+  </div>
+  <div class="panel-body" id="wishBody"></div>
+</div>
 
-  <div class="modal" id="qrisModal" role="dialog" aria-label="Bayar dengan QRIS" aria-modal="true">
-    <div class="modal-box qris-box">
-      <button class="modal-close" onclick="closeModal('qrisModal')" aria-label="Tutup">✕</button>
-      <div class="qris-title">📷 Bayar dengan QRIS</div>
-      <div class="qris-sub">Scan kode QR di bawah menggunakan aplikasi dompet digital apapun.</div>
-      <div class="qris-img-wrap">
-        <img
-          src="https://yaffblog.wordpress.com/wp-content/uploads/2026/04/img_3744.jpeg"
-          alt="Kode QRIS ShopNow"
-          onerror="this.parentNode.innerHTML='<div style=\'font-size:80px;padding:20px;\'>📷</div><p style=\'font-size:13px;color:var(--text-muted);\'>QR tidak tersedia</p>'"
-        >
+<div class="modal" id="loginModal">
+  <div class="modal-box auth-box">
+    <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+    <div class="auth-icon">👋</div>
+    <div class="auth-title">Masuk ke Akun</div>
+    <div class="auth-sub">Belanja jadi lebih mudah & aman!</div>
+    <div class="form-group">
+      <label class="form-label">Nama / Username</label>
+      <input type="text" class="form-field" id="loginName" placeholder="Contoh: Budi Santoso" onkeyup="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Kata Sandi</label>
+      <input type="password" class="form-field" id="loginPass" placeholder="Minimal 6 karakter" onkeyup="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="btn-checkout" style="margin-top:8px;" onclick="doLogin()">Masuk Sekarang 🚀</button>
+  </div>
+</div>
+
+<div class="modal" id="profileModal">
+  <div class="modal-box prof-box">
+    <button class="modal-close" onclick="closeModal('profileModal')">✕</button>
+    <div class="prof-avatar">👤</div>
+    <div class="prof-name" id="profName">Halo!</div>
+    <div class="prof-sub">Selamat datang kembali di ShopNow.</div>
+    <div style="background:var(--surface2);border-radius:12px;padding:16px;margin-bottom:18px;text-align:left;">
+      <div style="font-size:12px;color:var(--text-muted);font-weight:700;margin-bottom:8px;">RINGKASAN AKUN</div>
+      <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;">
+        <span>Item di keranjang</span><span id="profCartCount" style="color:var(--primary);">0</span>
       </div>
-      <div class="qris-amount" id="qrisAmount">Rp0</div>
-      <div class="qris-note">
-        ✅ Diterima: GoPay, OVO, DANA, ShopeePay, LinkAja, BCA Mobile, dan semua bank.<br><br>
-        📌 Setelah pembayaran berhasil, klik tombol di bawah dan tim kami akan menghubungi Anda via WhatsApp.
+      <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-top:8px;">
+        <span>Item di wishlist</span><span id="profWishCount" style="color:var(--danger);">0</span>
       </div>
-      <button class="btn-qris-done" onclick="confirmQRIS()">✅ Saya Sudah Bayar!</button>
+    </div>
+    <button class="btn-logout" onclick="doLogout()">Keluar Akun 🚪</button>
+  </div>
+</div>
+
+<div class="modal" id="qvModal">
+  <div class="modal-box qv-box" id="qvContent">
+    <button class="modal-close" onclick="closeModal('qvModal')">✕</button>
+  </div>
+</div>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-box ck-box">
+    <button class="modal-close" onclick="closeModal('checkoutModal')">✕</button>
+    <div class="ck-title">💳 Kasir Digital</div>
+    <div class="ck-sub">Lengkapi data pengiriman & pilih metode pembayaran.</div>
+    <div class="ck-grid">
+      <div>
+        <div class="section-label">Data Pengiriman</div>
+        <div class="form-group">
+          <label class="form-label">Nama Penerima</label>
+          <input type="text" class="form-field" id="ckName" placeholder="Nama lengkap penerima">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nomor HP / WhatsApp</label>
+          <input type="tel" class="form-field" id="ckPhone" placeholder="Contoh: 08123456789">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Alamat Lengkap</label>
+          <textarea class="form-field" id="ckAddress" rows="3" placeholder="Jalan, RT/RW, Kelurahan, Kota, Kode Pos"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Catatan Pesanan (Opsional)</label>
+          <input type="text" class="form-field" id="ckNote" placeholder="Misal: Warna biru, ukuran M...">
+        </div>
+
+        <div class="section-label" style="margin-top:20px;">Metode Pembayaran</div>
+        <div class="pay-methods">
+          <label class="pay-opt selected" id="payOptWA" onclick="selectPay('whatsapp', this)">
+            <input type="radio" name="payMethod" value="whatsapp" checked>
+            <span class="pay-icon">📱</span>
+            <div><div class="pay-name">Transfer Bank / E-Wallet</div><div class="pay-desc">Konfirmasi via WhatsApp otomatis</div></div>
+          </label>
+          <label class="pay-opt" id="payOptQR" onclick="selectPay('qris', this)">
+            <input type="radio" name="payMethod" value="qris">
+            <span class="pay-icon">📷</span>
+            <div><div class="pay-name">QRIS — Scan & Pay</div><div class="pay-desc">Semua dompet digital diterima</div></div>
+          </label>
+          <label class="pay-opt" id="payOptCOD" onclick="selectPay('cod', this)">
+            <input type="radio" name="payMethod" value="cod">
+            <span class="pay-icon">🚚</span>
+            <div><div class="pay-name">COD (Bayar di Tempat)</div><div class="pay-desc">Bayar saat barang tiba</div></div>
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">Ringkasan Pesanan</div>
+        <div class="ck-summary">
+          <div class="sum-title">🛍️ Detail Pesanan</div>
+          <div id="ckItems"></div>
+          <div class="sum-item">
+            <span>Subtotal</span><span id="ckSubtotal">Rp0</span>
+          </div>
+          <div class="sum-item">
+            <span>Ongkir (estimasi)</span><span style="color:var(--success);">GRATIS</span>
+          </div>
+          <div class="sum-item">
+            <span>Biaya Layanan</span><span>Rp2.500</span>
+          </div>
+          <div class="sum-item total">
+            <span>Total Bayar</span><span class="sum-val" id="ckTotal">Rp0</span>
+          </div>
+        </div>
+        <button class="btn-pay" onclick="processPayment()">Bayar Sekarang 🎉</button>
+      </div>
     </div>
   </div>
+</div>
 
-  <!-- ══════════════════════════════════
-       SUCCESS MODAL
-       ══════════════════════════════════ -->
-
-  <div class="modal" id="successModal" role="dialog" aria-label="Pesanan Berhasil" aria-modal="true">
-    <div class="modal-box success-box">
-      <div class="success-icon">🎉</div>
-      <div class="success-title">Pesanan Berhasil!</div>
-      <div
-        style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:28px;"
-        id="successMsg"
-        aria-live="polite"
-      >
-        Terima kasih atas kepercayaan Anda berbelanja di ShopNow!
-      </div>
-      <button class="btn-pay" onclick="closeModal('successModal')">Lanjut Belanja 🛍️</button>
+<div class="modal" id="qrisModal">
+  <div class="modal-box qris-box">
+    <button class="modal-close" onclick="closeModal('qrisModal')">✕</button>
+    <div class="qris-title">📷 Bayar dengan QRIS</div>
+    <div class="qris-sub">Scan kode QR di bawah menggunakan aplikasi dompet digital apapun.</div>
+    <div class="qris-img-wrap">
+      <img src="https://yaffblog.wordpress.com/wp-content/uploads/2026/04/img_3744.jpeg" alt="QRIS ShopNow" onerror="this.parentNode.innerHTML='<div style=\'font-size:80px;\'>📷</div>'">
     </div>
+    <div class="qris-amount" id="qrisAmount">Rp0</div>
+    <div class="qris-note">
+      ✅ Diterima: GoPay, OVO, DANA, ShopeePay, LinkAja, BCA Mobile, dan semua bank.<br><br>
+      📌 Setelah pembayaran berhasil, klik tombol di bawah dan tim kami akan menghubungi Anda via WhatsApp.
+    </div>
+    <button class="btn-qris-done" onclick="confirmQRIS()">✅ Saya Sudah Bayar!</button>
   </div>
+</div>
 
-  <!-- ══════════════════════════════════
-       TOAST CONTAINER
-       ══════════════════════════════════ -->
+<div class="modal" id="successModal">
+  <div class="modal-box" style="max-width:440px;padding:40px;text-align:center;">
+    <div style="font-size:72px;margin-bottom:16px;">🎉</div>
+    <div style="font-family:var(--font-display);font-size:24px;font-weight:800;margin-bottom:10px;">Pesanan Berhasil!</div>
+    <div style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:28px;" id="successMsg">Terima kasih atas kepercayaan Anda berbelanja di ShopNow!</div>
+    <button class="btn-pay" onclick="closeModal('successModal')">Lanjut Belanja 🛍️</button>
+  </div>
+</div>
 
-  <div id="toast-wrap" role="status" aria-live="polite" aria-atomic="false"></div>
+<div id="toast-wrap"></div>
 
-  <!-- ══════════════════════════════════
-       JAVASCRIPT
-       ══════════════════════════════════ -->
-
-  <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
